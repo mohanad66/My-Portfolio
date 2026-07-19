@@ -4,8 +4,10 @@ import 'aos/dist/aos.css';
 import Navbar from './components/Navbar';
 import ParticlesBackground from './components/ParticlesBackground';
 import Hero from './components/Hero';
+import About from './components/About';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
+import GitHubStats from './components/GitHubStats';
 import Awards from './components/Awards';
 import Contact from './components/Contact';
 
@@ -31,7 +33,8 @@ export default function Portfolio() {
     { title: 'Bedouin Trails', category: 'Tourism Website', description: 'Tourism Frontend for the user Part Using React and SEO enhancing .', tech: ['React.js', 'SCSS', 'React Router', 'Lucide', 'Axios'], color: ' from-blue-500 to-cyan-500 ', period: '2026', img: "/bedouin.PNG", github_link: "", websiteUrl: "https://bedouintrails.com" },
     { title: 'Digital Citizenship', category: 'Education', description: 'Interactive site for digital literacy.', tech: ['HTML', 'CSS', 'JS', " Bootstrap"], color: 'from-purple-700 to-pink-300', period: '2024', img: "Capture13.PNG", github_link: "https://github.com/mohanad66/DigitalCitienzship" },
     { title: 'Demo Portfolio', category: 'Portfolio', description: 'A Porftolio Template I made to Imagine my Porfolio .', tech: ['React js', 'CSS', " Bootstrap"], color: 'from-green-500 to-emerald-500', period: '2024', img: "Capture3.png", github_link: "https://github.com/mohanad66/Learn-3" },
-    { title: 'Horse Mining and Trading', category: 'Crypto Transactions website', description: 'A Website that the users use to transact their money and to invest it', tech: ['React js', 'CSS', " Django" , "RESTfuk framework" , "I18nt"], color: 'from-green-500 to-emerald-500', period: '2024', img: "HorseMining_Website.PNG",websiteUrl: "https://fronend-production-0f17.up.railway.app"  }
+    { title: 'Horse Mining Market', category: 'Full-Stack Crypto Platform', description: 'A production-ready crypto mining & investment platform with user dashboard, referral system, deposit/withdraw flows, admin panel, and full Arabic/English RTL support.', tech: ['React', 'Django', 'REST API', 'PostgreSQL', 'JWT', 'i18next', 'Tailwind', 'Docker'], color: 'from-amber-500 to-yellow-500', period: '2025', img: "/HorseMining_Website.PNG", websiteUrl: "https://fronend-production-0f17.up.railway.app" },
+    { title: 'Fake Market Store Django', category: 'Backend/Full-Stack', description: 'A fully functional e-commerce platform built with Django .', tech: ['Django', 'Python', 'Stripe', 'HTML/CSS', 'PostgreSQL'], color: 'from-blue-600 to-indigo-600', period: '2025' ,img: "/1.PNG", github_link: "https://github.com/mohanad66/Fake-Market-Store-Django" },
   ];
 
   const skillData = [
@@ -53,7 +56,10 @@ export default function Portfolio() {
     { name: 'VS Code', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg', color: '#007ACC', category: 'Tools' },
     { name: 'Git', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg', color: '#F05032', category: 'Tools' },
     { name: 'Photoshop', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg', color: '#31A8FF', category: 'Design' },
-    { name: 'C++', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg', color: '#00599C', category: 'Programming' }
+    { name: 'C++', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg', color: '#00599C', category: 'Programming' },
+    { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg', color: '#4169E1', category: 'Backend' },
+    { name: 'Node.js', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg', color: '#339933', category: 'Backend' },
+    { name: 'Docker', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', color: '#2496ED', category: 'Tools' }
   ];
 
   const awards = [
@@ -69,12 +75,14 @@ export default function Portfolio() {
         {!mobile && <div className="fixed top-20 left-10 w-64 md:w-96 h-64 md:h-96 bg-emerald-500/10 blur-[120px] rounded-full z-0 pointer-events-none" />}
 
         <Hero />
+        <About />
         <Projects projects={projects} />
         <Skills skillData={skillData} />
+        <GitHubStats />
         <Awards awards={[{ title: 'National Finalist', event: 'Future Science Challenge', organization: 'Hamdan Bin Rashid Foundation', year: '2025', icon: '🏆' }, { title: '3rd Place', event: 'Digital Transformation', organization: 'Sohag Governorate', year: '2024', icon: '🥉' }]} />
         <Contact />
 
-        <footer className="py-8 md:py-12 border-t border-white/5 text-center text-gray-600 text-[9px] md:text-[10px] tracking-[0.15em] md:tracking-[0.2em] uppercase px-4">© 2025 All Rights Reserved. Built with React & 3D WebGL Logic.</footer>
+        <footer className="py-8 md:py-12 border-t border-white/5 text-center text-gray-600 text-[9px] md:text-[10px] tracking-[0.15em] md:tracking-[0.2em] uppercase px-4">© 2026 All Rights Reserved. Built with React & 3D WebGL Logic.</footer>
 
         <style>{`
           .ease-expo { transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1); }
