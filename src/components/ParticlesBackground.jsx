@@ -19,16 +19,13 @@ export default function ParticlesBackground() {
 
     const options = useMemo(() => ({
         fullScreen: { enable: false },
-        interactivity: {
-            events: { onHover: { enable: !mobile, mode: 'grab' } },
-            modes: { grab: { distance: 200, links: { opacity: 0.5, color: '#10b981' } } }
-        },
+        autoPlay: true,
+        pauseOnBlur: true,
         particles: {
             color: { value: '#ffffff' },
-            links: { color: '#ffffff', distance: 150, enable: true, opacity: 0.05, width: 1 },
-            move: { enable: true, speed: 0.5 },
-            number: { value: mobile ? 40 : 80, density: { enable: true, area: 800 } },
-            opacity: { value: { min: 0.1, max: 0.3 } },
+            move: { enable: true, speed: 0.4 },
+            number: { value: mobile ? 25 : 45, density: { enable: true, area: 900 } },
+            opacity: { value: { min: 0.08, max: 0.25 } },
             size: { value: { min: 1, max: 2 } }
         }
     }), [mobile]);
