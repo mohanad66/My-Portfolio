@@ -1,0 +1,16 @@
+{
+  "name": "Mohanad Mahmoud — Full-Stack Web Developer",
+  "short_name": "Mohanad Mahmoud",
+  "description": "Full-Stack Web Developer from Egypt building production web applications with React and Django.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#10b981",
+  "icons": [
+    {
+      "src": "/mm_favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

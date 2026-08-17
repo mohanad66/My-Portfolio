@@ -1,0 +1,27 @@
+const skillData = [
+    { name: 'HTML', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg', color: '#E34F26', category: 'Frontend' },
+    { name: 'CSS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg', color: '#1572B6', category: 'Frontend' },
+    { name: 'React', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg', color: '#61DAFB', category: 'Frontend' },
+    { name: 'JavaScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg', color: '#F7DF1E', category: 'Programming' },
+    { name: 'TypeScript', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg', color: '#3178C6', category: 'Frontend' },
+    { name: 'Axios', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/axios/axios-plain.svg', color: '#5A29E4', category: 'Frontend' },
+    { name: 'Tailwind', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg', color: '#06B6D4', category: 'Styling' },
+    { name: 'Bootstrap', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg', color: '#7952B3', category: 'Styling' },
+    { name: 'SCSS', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg', color: '#CC6699', category: 'Styling' },
+    { name: 'Framer', icon: 'https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/framer.svg', color: '#0055FF', category: 'Animation' },
+    { name: 'GSAP', icon: 'https://raw.githubusercontent.com/gilbarbara/logos/main/logos/greensock.svg', color: '#88CE02', category: 'Animation' },
+    { name: 'Django', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg', color: '#21B573', category: 'Backend' },
+    { name: 'Python', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg', color: '#3776AB', category: 'Programming' },
+    { name: 'REST API', icon: 'https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/fastapi.svg', color: '#009688', category: 'Backend' },
+    { name: 'VS Code', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg', color: '#007ACC', category: 'Tools' },
+    { name: 'Git', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg', color: '#F05032', category: 'Tools' },
+    { name: 'C++', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg', color: '#00599C', category: 'Programming' },
+    { name: 'PostgreSQL', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg', color: '#4169E1', category: 'Backend' },
+    { name: 'Docker', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg', color: '#2496ED', category: 'Tools' },
+    { name: 'JWT', icon: 'https://raw.githubusercontent.com/gilbarbara/logos/main/logos/jwt.svg', color: '#00B9F1', category: 'Backend' },
+    { name: 'i18n / RTL', icon: 'https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/weblate.svg', color: '#144CC3', category: 'Frontend' },
+    { name: 'Nginx', icon: 'https://raw.githubusercontent.com/gilbarbara/logos/main/logos/nginx.svg', color: '#009639', category: 'Backend' },
+    { name: 'GitHub Actions', icon: 'https://raw.githubusercontent.com/gilbarbara/logos/main/logos/github-actions.svg', color: '#2088FF', category: 'Tools' },
+];
+
+export default skillData;

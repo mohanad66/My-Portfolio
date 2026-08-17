@@ -2,3 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #030303;
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
+.ease-expo {
+    transition-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+@media (max-width: 768px) {
+    * {
+        -webkit-tap-highlight-color: transparent;
+    }
+    .group {
+        transform: none !important;
+    }
+}

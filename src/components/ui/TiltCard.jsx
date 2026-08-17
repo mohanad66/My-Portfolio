@@ -1,16 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-
-const isMobile = () => window.innerWidth < 768;
+import useMobile from '../../hooks/useMobile';
 
 const TiltCard = ({ children, className }) => {
     const cardRef = useRef(null);
     const rotateXRef = useRef(null);
     const rotateYRef = useRef(null);
-    const [mobile, setMobile] = useState(false);
+    const leaveTweenRef = useRef(null);
+    const mobile = useMobile();
 
     useEffect(() => {
-        setMobile(isMobile());
         if (cardRef.current) {
             gsap.set(cardRef.current, { transformPerspective: 1000 });
             rotateXRef.current = gsap.quickTo(cardRef.current, 'rotationX', { duration: 0.4, ease: 'power2.out' });
@@ -21,6 +20,11 @@ const TiltCard = ({ children, className }) => {
     const handleMouseMove = (e) => {
         if (mobile || !cardRef.current || !rotateXRef.current || !rotateYRef.current) return;
 
+        if (leaveTweenRef.current) {
+            leaveTweenRef.current.kill();
+            leaveTweenRef.current = null;
+        }
+
         const { left, top, width, height } = cardRef.current.getBoundingClientRect();
         const x = (e.clientX - left) / width;
         const y = (e.clientY - top) / height;
@@ -30,14 +34,14 @@ const TiltCard = ({ children, className }) => {
     };
 
     const handleMouseLeave = () => {
-        if (mobile || !cardRef.current) return;
+        if (mobile || !cardRef.current || !rotateXRef.current || !rotateYRef.current) return;
 
-        gsap.to(cardRef.current, {
-            rotationX: 0,
-            rotationY: 0,
-            duration: 0.8,
-            ease: 'elastic.out(1, 0.35)'
-        });
+        if (leaveTweenRef.current) {
+            leaveTweenRef.current.kill();
+        }
+
+        rotateXRef.current(0);
+        rotateYRef.current(0);
     };
 
     return (

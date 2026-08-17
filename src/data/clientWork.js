@@ -1,0 +1,48 @@
+const clientProjects = [
+    {
+        title: 'StarBinance / Mizan',
+        role: 'Full-Stack Developer',
+        type: 'Production Customer Product',
+        badge: 'Live customer product',
+        badgeColor: 'emerald',
+        description: 'Built and delivered the full feature set for a live customer web product, working across the frontend, backend, business logic, user flows, and production implementation.',
+        tech: ['React', 'Django', 'REST API', 'PostgreSQL', 'JWT', 'i18next', 'Tailwind', 'Docker'],
+        color: 'from-amber-500 to-yellow-500',
+        images: ['/starbinance.png'],
+        link: 'https://starbinan.com/',
+        linkLabel: 'Visit Live Site',
+        caseStudy: {
+            client: 'Confidential customer project',
+            role: 'Full-Stack Developer',
+            challenge: 'Delivering a complete, production-ready web platform for a customer, covering all major features from frontend UI to backend business logic and deployment.',
+            delivered: 'Built the full application including frontend interfaces, backend APIs, database design, user authentication, business logic flows, and production deployment. Owned the entire feature set end-to-end.',
+            stack: 'React, Django, REST API, PostgreSQL, JWT, i18next, Tailwind CSS, Docker',
+            result: 'Live production product serving real customers at starbinan.com.',
+            next: 'Continued feature development, performance optimization, and customer-driven improvements.',
+        },
+    },
+    {
+        title: 'Bedouin Trails',
+        role: 'Frontend Developer',
+        type: 'Production Customer Tourism Platform',
+        badge: 'Live customer project',
+        badgeColor: 'blue',
+        description: 'Built the frontend experience for a live tourism platform, including responsive layouts, Arabic/RTL presentation, tour discovery flows, navigation, FAQ content, and customer contact paths.',
+        tech: ['React', 'SCSS', 'React Router', 'Lucide', 'Axios'],
+        color: 'from-blue-500 to-cyan-500',
+        images: ['/bedouin.PNG'],
+        link: 'https://bedouintrails.com/ar',
+        linkLabel: 'Visit Live Site',
+        caseStudy: {
+            client: 'Confidential customer project',
+            role: 'Frontend Developer',
+            challenge: 'Building a responsive, multilingual tourism frontend with Arabic/RTL support, tour listings, and customer-facing content flows for a live platform.',
+            delivered: 'Built responsive React layouts, Arabic/RTL presentation, tour discovery pages, FAQ sections, contact flows, navigation system, and production deployment.',
+            stack: 'React, SCSS, React Router, Lucide, Axios',
+            result: 'Live production frontend serving real users at bedouintrails.com.',
+            next: 'Further accessibility improvements, performance tuning, and additional content sections.',
+        },
+    },
+];
+
+export default clientProjects;

@@ -1,13 +1,14 @@
 import React, { useMemo, useState } from 'react';
+// eslint-disable-next-line no-unused-vars -- motion and AnimatePresence are used as JSX member expressions
 import { AnimatePresence, motion } from 'framer-motion';
+import skillData from '../../data/skills';
 
-export default function Skills({ skillData }) {
+export default function Skills() {
     const [active, setActive] = useState('All');
-    const mobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
 
     const categories = useMemo(
         () => ['All', ...new Set(skillData.map((s) => s.category))],
-        [skillData]
+        []
     );
 
     const counts = useMemo(() => {
@@ -16,22 +17,18 @@ export default function Skills({ skillData }) {
             c[s.category] = (c[s.category] || 0) + 1;
         });
         return c;
-    }, [skillData]);
+    }, []);
 
     const filtered = useMemo(
         () => (active === 'All' ? skillData : skillData.filter((s) => s.category === active)),
-        [skillData, active]
+        [active]
     );
 
     return (
-        <section id="skills" className="py-20 md:py-32 relative overflow-hidden">
+        <section id="skills" className="py-20 md:py-32 relative overflow-hidden" aria-label="Skills and technologies">
             <div className="absolute inset-0 bg-gradient-to-b from-black via-emerald-950/10 to-black" />
-            {!mobile && (
-                <>
-                    <div className="absolute top-1/4 left-1/4 w-64 md:w-96 h-64 md:h-96 bg-emerald-500/10 rounded-full blur-3xl" />
-                    <div className="absolute bottom-1/4 right-1/4 w-64 md:w-96 h-64 md:h-96 bg-blue-500/10 rounded-full blur-3xl" />
-                </>
-            )}
+            <div className="absolute top-1/4 left-1/4 w-64 md:w-96 h-64 md:h-96 bg-emerald-500/10 rounded-full blur-3xl" />
+            <div className="absolute bottom-1/4 right-1/4 w-64 md:w-96 h-64 md:h-96 bg-blue-500/10 rounded-full blur-3xl" />
 
             <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
                 <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10 md:mb-12">
@@ -42,7 +39,7 @@ export default function Skills({ skillData }) {
                     <p className="text-gray-400 text-sm md:text-lg max-w-2xl mx-auto px-4">Building modern, scalable web applications with cutting-edge technologies</p>
                 </motion.div>
 
-                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex flex-wrap justify-center gap-2 md:gap-3 mb-10 md:mb-14">
+                <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex flex-wrap justify-center gap-2 md:gap-3 mb-10 md:mb-14" role="toolbar" aria-label="Filter skills by category">
                     {categories.map((category) => (
                         <button
                             key={category}
@@ -63,7 +60,7 @@ export default function Skills({ skillData }) {
                     ))}
                 </motion.div>
 
-                <motion.div layout className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4">
+                <motion.div layout className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4" role="list" aria-label="Skills grid">
                     <AnimatePresence mode="popLayout">
                         {filtered.map((skill, i) => (
                             <motion.div
@@ -77,7 +74,7 @@ export default function Skills({ skillData }) {
                                     layout: { type: 'tween', duration: 0.3, ease: 'easeOut' },
                                     default: { type: 'tween', duration: 0.35, ease: 'easeOut', delay: Math.min(i * 0.02, 0.2) },
                                 }}
-                                className="relative aspect-square rounded-2xl md:rounded-3xl bg-white/[0.04] border border-white/10 overflow-hidden"
+                                className="relative aspect-square rounded-2xl md:rounded-3xl bg-white/[0.04] border border-white/10 overflow-hidden hover:border-emerald-500/20 transition-colors duration-300"
                             >
                                 <div className="absolute top-0 right-0 w-16 md:w-20 h-16 md:h-20 bg-gradient-to-br from-white/5 to-transparent rounded-bl-2xl md:rounded-bl-3xl" />
                                 <div className="relative z-10 h-full flex flex-col items-center justify-center p-4 md:p-6 gap-2 md:gap-4">

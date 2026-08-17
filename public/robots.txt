@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /dist/
+
+Sitemap: https://stately-babka-6879d1.netlify.app/sitemap.xml

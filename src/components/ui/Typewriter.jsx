@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
+// eslint-disable-next-line no-unused-vars -- motion is used as <motion.span> JSX member expressions
 import { motion } from 'framer-motion';
 
-const Typewriter = ({ texts, speed = 100, wait = 2000 }) => {
+export default function Typewriter({ texts, speed = 100, wait = 2000 }) {
     const [displayText, setDisplayText] = useState('');
     const [index, setIndex] = useState(0);
     const [isDeleting, setIsDeleting] = useState(false);
@@ -40,7 +41,7 @@ const Typewriter = ({ texts, speed = 100, wait = 2000 }) => {
     }, [displayText, isDeleting, index, texts, speed, wait, isPaused]);
 
     return (
-        <span className="text-emerald-400 font-mono font-bold">
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300 font-mono font-bold">
             {displayText}
             <motion.span
                 animate={{ opacity: [1, 0] }}
@@ -49,6 +50,4 @@ const Typewriter = ({ texts, speed = 100, wait = 2000 }) => {
             />
         </span>
     );
-};
-
-export default Typewriter;
+}
