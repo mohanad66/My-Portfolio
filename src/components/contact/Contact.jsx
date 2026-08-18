@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 // eslint-disable-next-line no-unused-vars -- motion is used as <motion.div> JSX member expressions
 import { motion } from 'framer-motion';
-import emailjs from '@emailjs/browser';
 import useMobile from '../../hooks/useMobile';
 
 export default function Contact() {
@@ -23,16 +22,15 @@ export default function Contact() {
         setStatus({ loading: true, success: false, error: false, message: '' });
 
         try {
-            await emailjs.send('service_h3v91ko', 'template_ne2oe4r', {
-                from_name: formData.name,
-                from_email: formData.email,
-                project_type: formData.projectType || 'Not specified',
-                project_link: formData.projectLink || 'None provided',
-                message: formData.message,
-                timeline: formData.timeline || 'Not specified',
-                to_name: 'Mohanad',
-                time: new Date().toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Africa/Cairo' }),
-            }, '8QQ_y17IlH6z0UwSh');
+            const response = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            });
+
+            const result = await response.json();
+
+            if (!response.ok) throw new Error(result.error || 'Failed to send');
 
             setStatus({ loading: false, success: true, error: false, message: 'Message sent successfully! I will review your project details and reply with a first scope and recommended next step.' });
             setFormData({ name: '', email: '', projectType: '', projectLink: '', message: '', timeline: '' });

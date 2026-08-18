@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import TiltCard from '../ui/TiltCard';
 import Carousel from '../ui/Carousel';
 import clientProjects from '../../data/clientWork';
+import { useSanityData } from '../../lib/useSanityData';
 
 function CaseStudyModal({ project, onClose }) {
     if (!project) return null;
@@ -69,6 +70,8 @@ function CaseStudyModal({ project, onClose }) {
 
 export default function ClientWork() {
     const [activeCaseStudy, setActiveCaseStudy] = useState(null);
+    const { data } = useSanityData('clientWork', clientProjects);
+    const projects = data || clientProjects;
 
     return (
         <section id="client-work" className="py-20 md:py-32 px-4 md:px-6 relative z-10 max-w-7xl mx-auto" aria-label="Client work and production projects">
@@ -86,7 +89,7 @@ export default function ClientWork() {
             </motion.div>
 
             <div className="grid md:grid-cols-2 gap-6 md:gap-8">
-                {clientProjects.map((project, i) => (
+                {projects.map((project, i) => (
                     <motion.div
                         key={project.title}
                         initial={{ opacity: 0, y: 40 }}

@@ -3,10 +3,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import TiltCard from '../ui/TiltCard';
 import useMobile from '../../hooks/useMobile';
-import awards from '../../data/awards';
+import awardsData from '../../data/awards';
+import { useSanityData } from '../../lib/useSanityData';
 
 export default function Awards() {
     const mobile = useMobile();
+    const { data } = useSanityData('awards', awardsData);
+    const awards = data || awardsData;
 
     return (
         <section id="awards" className="py-20 md:py-32 px-4 md:px-6 relative z-10" aria-label="Awards and recognition">

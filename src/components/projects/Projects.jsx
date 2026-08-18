@@ -4,8 +4,11 @@ import { motion } from 'framer-motion';
 import TiltCard from '../ui/TiltCard';
 import Carousel from '../ui/Carousel';
 import personalProjects from '../../data/projects';
+import { useSanityData } from '../../lib/useSanityData';
 
 export default function Projects() {
+    const { data } = useSanityData('projects', personalProjects);
+    const projects = data || personalProjects;
     return (
         <section id="projects" className="py-20 md:py-40 px-4 md:px-6 relative z-10 max-w-7xl mx-auto" aria-label="Selected projects">
             <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-20 gap-6">
@@ -24,7 +27,7 @@ export default function Projects() {
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                {personalProjects.map((p, i) => (
+                {projects.map((p, i) => (
                     <motion.div
                         key={p.title}
                         initial={{ opacity: 0, y: 40 }}

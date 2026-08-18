@@ -2,26 +2,29 @@ import React, { useMemo, useState } from 'react';
 // eslint-disable-next-line no-unused-vars -- motion and AnimatePresence are used as JSX member expressions
 import { AnimatePresence, motion } from 'framer-motion';
 import skillData from '../../data/skills';
+import { useSanityData } from '../../lib/useSanityData';
 
 export default function Skills() {
     const [active, setActive] = useState('All');
+    const { data: sanitySkills } = useSanityData('skills', skillData);
+    const allSkills = sanitySkills || skillData;
 
     const categories = useMemo(
-        () => ['All', ...new Set(skillData.map((s) => s.category))],
-        []
+        () => ['All', ...new Set(allSkills.map((s) => s.category))],
+        [allSkills]
     );
 
     const counts = useMemo(() => {
         const c = {};
-        skillData.forEach((s) => {
+        allSkills.forEach((s) => {
             c[s.category] = (c[s.category] || 0) + 1;
         });
         return c;
-    }, []);
+    }, [allSkills]);
 
     const filtered = useMemo(
-        () => (active === 'All' ? skillData : skillData.filter((s) => s.category === active)),
-        [active]
+        () => (active === 'All' ? allSkills : allSkills.filter((s) => s.category === active)),
+        [active, allSkills]
     );
 
     return (
@@ -54,7 +57,7 @@ export default function Skills() {
                         >
                             {category}
                             <span className={`ml-2 font-bold ${active === category ? 'text-emerald-300' : 'text-emerald-400'}`}>
-                                {category === 'All' ? skillData.length : counts[category] || 0}
+                                {category === 'All' ? allSkills.length : counts[category] || 0}
                             </span>
                         </button>
                     ))}

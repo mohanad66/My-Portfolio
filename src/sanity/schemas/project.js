@@ -1,0 +1,20 @@
+export default {
+    name: 'project',
+    title: 'Project',
+    type: 'document',
+    fields: [
+        { name: 'title', title: 'Title', type: 'string', validation: (Rule) => Rule.required() },
+        { name: 'category', title: 'Category', type: 'string' },
+        { name: 'purpose', title: 'Purpose', type: 'text' },
+        { name: 'whatIBuilt', title: 'What I Built', type: 'text' },
+        { name: 'tech', title: 'Technologies', type: 'array', of: [{ type: 'string' }] },
+        { name: 'role', title: 'Role', type: 'string' },
+        { name: 'color', title: 'Gradient Color', type: 'string', description: 'e.g. from-emerald-500 to-teal-500' },
+        { name: 'period', title: 'Period', type: 'string' },
+        { name: 'images', title: 'Images', type: 'array', of: [{ type: 'image', options: { hotspot: true } }] },
+        { name: 'github_link', title: 'GitHub Link', type: 'url' },
+        { name: 'lesson', title: 'Technical Lesson', type: 'text' },
+        { name: 'order', title: 'Order', type: 'number' },
+    ],
+    orderings: [{ title: 'Order', name: 'orderAsc', by: [{ field: 'order', direction: 'asc' }] }],
+};
