@@ -9,8 +9,8 @@ const clientProjects = [
         tech: ['React', 'Vite', 'Tailwind', 'React Router', 'Lucide', 'SCSS'],
         color: 'from-amber-500 to-orange-500',
         images: ['/Joud-1.PNG', '/Joud-2.PNG', '/Joud-3.PNG', '/Joud-4.PNG'],
-        link: '',
-        linkLabel: '',
+        link: 'https://joudcafe.vercel.app/',
+        linkLabel: 'Visit Live Site',
         caseStudy: {
             client: 'بن جود · Café owner in Tahta, Sohag',
             role: 'Frontend Developer',
@@ -18,7 +18,7 @@ const clientProjects = [
             delivered: 'Built a fully bilingual-conscious, Arabic/RTL landing page with hero, story, menu categories (no prices — they were never confirmed), a gallery with auto-generated placeholder visuals from the brand’s palette, direct tel: links for every order/contact action, SEO + CafeOrCoffeeShop structured data (confirmed facts only), and a pre-launch checklist in the README.',
             stack: 'React, Vite, Tailwind CSS, React Router, Lucide, Cairo & Fraunces fonts',
             result: 'A credible, mobile-first presence that puts the café on the map and makes calling + finding it effortless.',
-            next: 'Confirm real prices, hours, delivery radius, the exact map pin, and photo usage rights from the owner before launch.',
+            next: 'Confirm real prices, hours, delivery radius, and photo usage rights from the owner, then expand into online ordering and a loyalty program.',
         },
     },
     {

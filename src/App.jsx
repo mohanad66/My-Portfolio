@@ -1,4 +1,5 @@
 import React from 'react';
+import { LanguageProvider, useLanguage } from './lib/LanguageContext';
 import Navbar from './components/layout/Navbar';
 import ParticlesBackground from './components/layout/ParticlesBackground';
 import Hero from './components/hero/Hero';
@@ -12,12 +13,13 @@ import GitHubStats from './components/github/GitHubStats';
 import Awards from './components/awards/Awards';
 import Contact from './components/contact/Contact';
 
-export default function Portfolio() {
+function Shell() {
+    const { dir, t } = useLanguage();
     return (
         <>
             <Navbar />
             <ParticlesBackground />
-            <div className="relative min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30">
+            <div dir={dir} className="relative min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30">
                 <div className="fixed top-20 left-10 w-64 md:w-96 h-64 md:h-96 bg-emerald-500/10 blur-[120px] rounded-full z-0 pointer-events-none" aria-hidden="true" />
 
                 <main>
@@ -34,9 +36,17 @@ export default function Portfolio() {
                 </main>
 
                 <footer className="py-8 md:py-12 border-t border-white/5 text-center text-gray-600 text-[9px] md:text-[10px] tracking-[0.15em] md:tracking-[0.2em] uppercase px-4" role="contentinfo">
-                    © 2026 All Rights Reserved. Built with React & 3D WebGL Logic.
+                    {t('footer.copy')} {t('footer.built')}
                 </footer>
             </div>
         </>
+    );
+}
+
+export default function Portfolio() {
+    return (
+        <LanguageProvider>
+            <Shell />
+        </LanguageProvider>
     );
 }

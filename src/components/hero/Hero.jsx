@@ -5,8 +5,10 @@ import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import useMobile from '../../hooks/useMobile';
 import Typewriter from '../ui/Typewriter';
+import { useLanguage } from '../../lib/LanguageContext';
 
 export default function Hero() {
+    const { t } = useLanguage();
     const container = useRef(null);
     const heroTitleRef = useRef(null);
     const heroSubtitleRef = useRef(null);
@@ -43,7 +45,7 @@ export default function Hero() {
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
                         </span>
-                        Available for projects
+                        {t('hero.available')}
                     </span>
                 </motion.div>
 
@@ -63,7 +65,7 @@ export default function Hero() {
                     className="text-base sm:text-xl md:text-3xl font-bold text-emerald-400 mb-4 tracking-tight"
                 >
                     <Typewriter
-                        texts={['Full-Stack Web Developer', 'React & Django Developer', 'Production Web Apps']}
+                        texts={[t('hero.subtitle1'), t('hero.subtitle2'), t('hero.subtitle3')]}
                         speed={80}
                         wait={2500}
                     />
@@ -75,7 +77,7 @@ export default function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     className="text-sm sm:text-base md:text-lg text-gray-400 max-w-2xl mx-auto mb-3 leading-relaxed"
                 >
-                    I build production-ready web applications, customer-facing websites, dashboards, e-commerce systems, and REST APIs using React and Django.
+                    {t('hero.desc')}
                 </motion.p>
 
                 <motion.p
@@ -84,7 +86,7 @@ export default function Hero() {
                     animate={{ opacity: 1, y: 0 }}
                     className="text-xs sm:text-sm text-gray-500 mb-10 tracking-wide"
                 >
-                    Based in Egypt &middot; Working with businesses, startups, and agencies worldwide.
+                    {t('hero.location')}
                 </motion.p>
 
                 <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4 justify-center px-4">
@@ -94,7 +96,7 @@ export default function Hero() {
                         whileTap={{ scale: 0.95 }}
                         className="px-6 md:px-8 py-3 bg-emerald-500 text-black font-semibold rounded-full hover:bg-emerald-400 hover:shadow-[0_0_40px_rgba(16,185,129,0.4)] transition-all text-sm md:text-base"
                     >
-                        View Client Work
+                        {t('hero.viewWork')}
                     </motion.a>
                     <motion.a
                         href="#contact"
@@ -102,7 +104,7 @@ export default function Hero() {
                         whileTap={{ scale: 0.95 }}
                         className="px-6 md:px-8 py-3 glass-glow glass-hover text-emerald-400 rounded-full transition-all text-sm md:text-base"
                     >
-                        Start a Project
+                        {t('hero.startProject')}
                     </motion.a>
                     <motion.a
                         href="/Mohanad-Mahmoud in second year in high school.pdf"
@@ -112,7 +114,7 @@ export default function Hero() {
                         className="px-6 md:px-8 py-3 glass glass-hover text-gray-300 rounded-full transition-all flex items-center justify-center gap-2 text-sm md:text-base"
                     >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-                        Download CV
+                        {t('hero.downloadCv')}
                     </motion.a>
                 </div>
             </div>

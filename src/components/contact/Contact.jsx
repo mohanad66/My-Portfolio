@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 // eslint-disable-next-line no-unused-vars -- motion is used as <motion.div> JSX member expressions
 import { motion } from 'framer-motion';
 import useMobile from '../../hooks/useMobile';
+import { useLanguage } from '../../lib/LanguageContext';
 
 export default function Contact() {
+    const { t } = useLanguage();
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -32,13 +34,13 @@ export default function Contact() {
 
             if (!response.ok) throw new Error(result.error || 'Failed to send');
 
-            setStatus({ loading: false, success: true, error: false, message: 'Message sent successfully! I will review your project details and reply with a first scope and recommended next step.' });
+            setStatus({ loading: false, success: true, error: false, message: t('contact.success') });
             setFormData({ name: '', email: '', projectType: '', projectLink: '', message: '', timeline: '' });
 
             setTimeout(() => setStatus({ loading: false, success: false, error: false, message: '' }), 8000);
         } catch (error) {
             console.error(error);
-            setStatus({ loading: false, success: false, error: true, message: 'Failed to send. Please email me directly at mohanadmahmoud33245@gmail.com' });
+            setStatus({ loading: false, success: false, error: true, message: t('contact.error') });
         }
     };
 
@@ -59,14 +61,14 @@ export default function Contact() {
                     <div className="relative z-10 grid md:grid-cols-2 gap-8 md:gap-12 items-start">
                         <div className="text-left">
                             <h2 className="text-3xl md:text-5xl font-black mb-4 md:mb-6 tracking-tighter">
-                                HAVE A WEBSITE,<br />WEB APP, OR<br />PRODUCT IDEA?
+                                {t('contact.heading')}
                             </h2>
                             <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-6 md:mb-8">
-                                Send me the current link or a short description of what you want to build. I will reply with the first practical scope and recommended next step.
+                                {t('contact.desc')}
                             </p>
                             <div className="space-y-2 text-xs md:text-sm font-bold text-emerald-400 tracking-wider md:tracking-widest uppercase break-all mb-8">
                                 <p>mohanadmahmoud33245@gmail.com</p>
-                                <p>Based in Egypt, Working Worldwide</p>
+                                <p>{t('contact.location')}</p>
                             </div>
 
                             <div className="flex gap-4">
@@ -85,40 +87,40 @@ export default function Contact() {
 
                         <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4" aria-label="Contact form to send a project inquiry">
                             <motion.div whileHover={{ scale: mobile ? 1 : 1.02 }}>
-                                <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Your Name" required className={inputClass} aria-label="Your name" autoComplete="name" />
+                                <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder={t('contact.name')} required className={inputClass} aria-label="Your name" autoComplete="name" />
                             </motion.div>
 
                             <motion.div whileHover={{ scale: mobile ? 1 : 1.02 }}>
-                                <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email Address" required className={inputClass} aria-label="Your email address" autoComplete="email" />
+                                <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder={t('contact.email')} required className={inputClass} aria-label="Your email address" autoComplete="email" />
                             </motion.div>
 
                             <motion.div whileHover={{ scale: mobile ? 1 : 1.02 }}>
                                 <select name="projectType" value={formData.projectType} onChange={handleChange} className={selectClass} aria-label="Project type">
-                                    <option value="" disabled hidden>Project Type</option>
-                                    <option value="web-app">Web Application</option>
-                                    <option value="ecommerce">E-commerce</option>
-                                    <option value="dashboard">Dashboard / Internal Tool</option>
-                                    <option value="frontend">Frontend Implementation</option>
-                                    <option value="api">REST API / Backend</option>
-                                    <option value="other">Other</option>
+                                    <option value="" disabled hidden>{t('contact.projectType')}</option>
+                                    <option value="web-app">{t('contact.webApp')}</option>
+                                    <option value="ecommerce">{t('contact.ecommerce')}</option>
+                                    <option value="dashboard">{t('contact.dashboard')}</option>
+                                    <option value="frontend">{t('contact.frontend')}</option>
+                                    <option value="api">{t('contact.api')}</option>
+                                    <option value="other">{t('contact.other')}</option>
                                 </select>
                             </motion.div>
 
                             <motion.div whileHover={{ scale: mobile ? 1 : 1.02 }}>
-                                <input type="url" name="projectLink" value={formData.projectLink} onChange={handleChange} placeholder="Current Website or Repository Link (optional)" className={inputClass} aria-label="Project link or repository URL" />
+                                <input type="url" name="projectLink" value={formData.projectLink} onChange={handleChange} placeholder={t('contact.projectLink')} className={inputClass} aria-label="Project link or repository URL" />
                             </motion.div>
 
                             <motion.div whileHover={{ scale: mobile ? 1 : 1.02 }}>
-                                <textarea name="message" value={formData.message} onChange={handleChange} placeholder="Short project description — what do you want to build?" rows="4" required className={inputClass + " resize-none"} aria-label="Project description" />
+                                <textarea name="message" value={formData.message} onChange={handleChange} placeholder={t('contact.message')} rows="4" required className={inputClass + " resize-none"} aria-label="Project description" />
                             </motion.div>
 
                             <motion.div whileHover={{ scale: mobile ? 1 : 1.02 }}>
                                 <select name="timeline" value={formData.timeline} onChange={handleChange} className={selectClass} aria-label="Target timeline">
-                                    <option value="" disabled hidden>Target Timeline (optional)</option>
-                                    <option value="asap">As soon as possible</option>
-                                    <option value="1-month">Within 1 month</option>
-                                    <option value="3-months">Within 3 months</option>
-                                    <option value="flexible">Flexible / No rush</option>
+                                    <option value="" disabled hidden>{t('contact.timeline')}</option>
+                                    <option value="asap">{t('contact.timelineAsap')}</option>
+                                    <option value="1-month">{t('contact.timeline1m')}</option>
+                                    <option value="3-months">{t('contact.timeline3m')}</option>
+                                    <option value="flexible">{t('contact.timelineFlex')}</option>
                                 </select>
                             </motion.div>
 
@@ -145,9 +147,9 @@ export default function Contact() {
                                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
                                             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
                                         </svg>
-                                        Sending...
+                                        {t('contact.sending')}
                                     </>
-                                ) : 'Send Message'}
+                                ) : t('contact.send')}
                             </motion.button>
                         </form>
                     </div>

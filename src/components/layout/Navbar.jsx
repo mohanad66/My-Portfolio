@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
 // eslint-disable-next-line no-unused-vars -- motion is used as <motion.div> JSX member expressions
 import { motion, useScroll, useTransform, useSpring, useMotionValueEvent } from 'framer-motion';
+import { useLanguage } from '../../lib/LanguageContext';
 
-const navItems = ['Home', 'About', 'Client Work', 'Projects', 'Skills', 'Awards', 'Contact'];
-
-const navIdMap = {
-    'Home': 'home',
-    'About': 'about',
-    'Client Work': 'client-work',
-    'Projects': 'projects',
-    'Skills': 'skills',
-    'Awards': 'awards',
-    'Contact': 'contact',
-};
+const navKeys = [
+    { key: 'home', id: 'home' },
+    { key: 'about', id: 'about' },
+    { key: 'clientWork', id: 'client-work' },
+    { key: 'projects', id: 'projects' },
+    { key: 'skills', id: 'skills' },
+    { key: 'awards', id: 'awards' },
+    { key: 'contact', id: 'contact' },
+];
 
 export default function Navbar() {
     const [hovered, setHovered] = useState(null);
     const [hidden, setHidden] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const { lang, toggleLang, t } = useLanguage();
     const { scrollYProgress, scrollY } = useScroll();
 
     const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
@@ -54,17 +54,17 @@ export default function Navbar() {
                 MM<span className="text-emerald-500">.</span>
             </a>
 
-            <div className="hidden md:flex gap-10 text-xs font-bold tracking-[0.2em] uppercase text-gray-400">
-                {navItems.map((item) => (
+            <div className="hidden md:flex items-center gap-8 text-xs font-bold tracking-[0.2em] uppercase text-gray-400">
+                {navKeys.map(({ key, id }) => (
                     <a
-                        key={item}
-                        href={`#${navIdMap[item]}`}
-                        onMouseEnter={() => setHovered(item)}
+                        key={key}
+                        href={`#${id}`}
+                        onMouseEnter={() => setHovered(key)}
                         onMouseLeave={() => setHovered(null)}
                         className="relative hover:text-white transition-colors"
                     >
-                        {item}
-                        {hovered === item && (
+                        {t(`nav.${key}`)}
+                        {hovered === key && (
                             <motion.div layoutId="nav-glow" className="absolute -bottom-2 left-0 w-full h-[1px] bg-emerald-500 shadow-[0_0_10px_#10b981]" />
                         )}
                     </a>
@@ -82,6 +82,16 @@ export default function Navbar() {
             </button>
 
             <div className="hidden md:flex items-center gap-4">
+                <button
+                    type="button"
+                    onClick={toggleLang}
+                    aria-label={lang === 'en' ? 'التبديل إلى العربية' : 'Switch to English'}
+                    className="group relative flex items-center gap-1 px-3 py-1.5 rounded-full glass glass-hover border border-emerald-500/20 overflow-hidden"
+                >
+                    <span className={`text-[10px] font-black uppercase tracking-widest transition-colors ${lang === 'en' ? 'text-emerald-400' : 'text-gray-500 group-hover:text-gray-300'}`}>EN</span>
+                    <span className="w-px h-3 bg-white/15" />
+                    <span className={`text-[10px] font-black uppercase tracking-widest transition-colors ${lang === 'ar' ? 'text-emerald-400' : 'text-gray-500 group-hover:text-gray-300'}`}>ع</span>
+                </button>
                 <a href="https://github.com/mohanad66" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors" aria-label="GitHub">
                     <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                 </a>
@@ -92,21 +102,32 @@ export default function Navbar() {
                     <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                 </a>
                 <motion.a href="#contact" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="px-6 py-2 bg-emerald-600 text-black text-[10px] font-black uppercase tracking-widest rounded-full hover:bg-emerald-400 transition-colors">
-                    Start a Project
+                    {t('nav.startProject')}
                 </motion.a>
             </div>
 
             {mobileMenuOpen && (
                 <motion.div id="mobile-menu" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} className="absolute top-full left-0 right-0 bg-black/95 backdrop-blur-xl border-b border-white/10 md:hidden" role="menu">
                     <div className="flex flex-col p-6 gap-4">
-                        {navItems.map((item) => (
-                            <a key={item} href={`#${navIdMap[item]}`} onClick={() => setMobileMenuOpen(false)} className="text-gray-400 hover:text-white transition-colors py-2 text-sm font-semibold uppercase tracking-wider">
-                                {item}
+                        {navKeys.map(({ key, id }) => (
+                            <a key={key} href={`#${id}`} onClick={() => setMobileMenuOpen(false)} className="text-gray-400 hover:text-white transition-colors py-2 text-sm font-semibold uppercase tracking-wider">
+                                {t(`nav.${key}`)}
                             </a>
                         ))}
-                        <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="mt-4 px-6 py-3 bg-emerald-600 text-black text-xs font-black uppercase tracking-widest rounded-full hover:bg-emerald-400 transition-colors text-center">
-                            Start a Project
-                        </a>
+                        <div className="flex items-center justify-between gap-4 mt-2 pt-4 border-t border-white/10">
+                            <button
+                                type="button"
+                                onClick={toggleLang}
+                                className="flex items-center gap-2 px-4 py-2 rounded-full glass border border-emerald-500/20 text-xs font-bold"
+                            >
+                                <span className={lang === 'en' ? 'text-emerald-400' : 'text-gray-400'}>EN</span>
+                                <span className="w-px h-3 bg-white/15" />
+                                <span className={lang === 'ar' ? 'text-emerald-400' : 'text-gray-400'}>ع</span>
+                            </button>
+                            <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="flex-1 px-6 py-3 bg-emerald-600 text-black text-xs font-black uppercase tracking-widest rounded-full hover:bg-emerald-400 transition-colors text-center">
+                                {t('nav.startProject')}
+                            </a>
+                        </div>
                     </div>
                 </motion.div>
             )}

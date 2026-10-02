@@ -3,8 +3,10 @@ import React, { useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import skillData from '../../data/skills';
 import { useSanityData } from '../../lib/useSanityData';
+import { useLanguage } from '../../lib/LanguageContext';
 
 export default function Skills() {
+    const { t } = useLanguage();
     const [active, setActive] = useState('All');
     const { data: sanitySkills } = useSanityData('skills', skillData);
     const allSkills = sanitySkills || skillData;
@@ -36,10 +38,10 @@ export default function Skills() {
             <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
                 <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10 md:mb-12">
                     <div className="inline-block mb-4 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20">
-                        <span className="text-emerald-400 text-xs md:text-sm font-semibold tracking-wider uppercase">Tech Stack & Expertise</span>
+                        <span className="text-emerald-400 text-xs md:text-sm font-semibold tracking-wider uppercase">{t('skills.badge')}</span>
                     </div>
-                    <h2 className="text-4xl md:text-6xl font-black text-white mb-4 md:mb-6">Skills & <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">Technologies</span></h2>
-                    <p className="text-gray-400 text-sm md:text-lg max-w-2xl mx-auto px-4">Building modern, scalable web applications with cutting-edge technologies</p>
+<h2 className="text-4xl md:text-6xl font-black text-white mb-4 md:mb-6">{t('skills.title')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">{t('skills.highlight')}</span></h2>
+                <p className="text-gray-400 text-sm md:text-lg max-w-2xl mx-auto px-4">{t('skills.subtitle')}</p>
                 </motion.div>
 
                 <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="flex flex-wrap justify-center gap-2 md:gap-3 mb-10 md:mb-14" role="toolbar" aria-label="Filter skills by category">

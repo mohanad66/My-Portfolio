@@ -1,8 +1,10 @@
 import React from 'react';
 // eslint-disable-next-line no-unused-vars -- motion is used as <motion.div> JSX member expressions
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../lib/LanguageContext';
 
 export default function About() {
+    const { t } = useLanguage();
     return (
         <section id="about" className="py-20 md:py-32 px-4 md:px-6 relative z-10 max-w-7xl mx-auto" aria-label="About Mohanad Mahmoud">
             <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -20,7 +22,7 @@ export default function About() {
                         <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/60 via-transparent to-transparent" />
                         <div className="absolute bottom-4 left-4 right-4 p-4 glass-strong rounded-2xl hidden md:block">
                             <p className="text-[10px] uppercase tracking-widest text-emerald-400 font-bold mb-1">Mohanad Mahmoud</p>
-                            <p className="text-xs text-gray-300">Full-Stack Web Developer — React & Django</p>
+                            <p className="text-xs text-gray-300">{t('hero.subtitle1')} — React & Django</p>
                         </div>
                     </div>
                 </motion.div>
@@ -31,28 +33,28 @@ export default function About() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
                 >
-                    <h2 className="text-3xl md:text-5xl font-black mb-6 tracking-tighter">ABOUT <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">ME</span></h2>
+                    <h2 className="text-3xl md:text-5xl font-black mb-6 tracking-tighter">{t('about.title')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">{t('about.me')}</span></h2>
                     <div className="space-y-4 text-gray-400 text-sm md:text-base leading-relaxed mb-8">
                         <p>
-                            I&apos;m Mohanad Mahmoud, a Full-Stack Web Developer based in Egypt. I build production web applications and customer-facing digital products with React, Django, REST APIs, and databases.
+                            {t('about.p1')}
                         </p>
                         <p>
-                            My experience includes delivering a complete live customer product and building the frontend for a live tourism platform. I also create technical projects such as an index-based search engine to deepen my understanding of APIs, databases, indexing, ranking, and web application architecture.
+                            {t('about.p2')}
                         </p>
                         <p>
-                            I care about clear user flows, maintainable code, responsive interfaces, reliable backend logic, and delivering software that people can actually use.
+                            {t('about.p3')}
                         </p>
                     </div>
 
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                         {[
-                            { value: '2', label: 'Customer Products' },
-                            { value: '6+', label: 'Projects Shipped' },
-                            { value: '30+', label: 'Repositories' },
+                            { value: '2', key: 'customerProducts' },
+                            { value: '6+', key: 'projectsShipped' },
+                            { value: '30+', key: 'repositories' },
                         ].map((stat) => (
-                            <div key={stat.label} className="glass glass-hover rounded-2xl p-4 md:p-5 text-center">
+                            <div key={stat.key} className="glass glass-hover rounded-2xl p-4 md:p-5 text-center">
                                 <div className="text-3xl md:text-4xl font-black text-emerald-400 mb-2 text-glow">{stat.value}</div>
-                                <div className="text-[9px] md:text-[10px] text-gray-500 font-bold uppercase tracking-widest">{stat.label}</div>
+                                <div className="text-[9px] md:text-[10px] text-gray-500 font-bold uppercase tracking-widest">{t(`about.${stat.key}`)}</div>
                             </div>
                         ))}
                     </div>

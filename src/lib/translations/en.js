@@ -52,8 +52,10 @@ export default {
         startProject: 'Start a Project',
     },
     skills: {
-        title: 'Tech',
-        highlight: 'Stack',
+        title: 'Skills &',
+        highlight: 'Technologies',
+        subtitle: 'Building modern, scalable web applications with cutting-edge technologies',
+        badge: 'Tech Stack & Expertise',
     },
     contact: {
         heading: 'HAVE A WEBSITE, WEB APP, OR PRODUCT IDEA?',
@@ -78,6 +80,7 @@ export default {
         frontend: 'Frontend Implementation',
         api: 'REST API / Backend',
         other: 'Other',
+        location: 'Based in Egypt, Working Worldwide',
     },
     footer: {
         copy: '© 2026 All Rights Reserved.',

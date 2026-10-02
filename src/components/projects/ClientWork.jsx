@@ -5,10 +5,17 @@ import TiltCard from '../ui/TiltCard';
 import Carousel from '../ui/Carousel';
 import clientProjects from '../../data/clientWork';
 import { useSanityData } from '../../lib/useSanityData';
+import { useLanguage } from '../../lib/LanguageContext';
 
-function CaseStudyModal({ project, onClose }) {
+const LABELS = {
+    en: { Client: 'Client', 'My Role': 'My Role', 'The Challenge': 'The Challenge', 'What I Delivered': 'What I Delivered', 'Technical Stack': 'Technical Stack', 'Live Result': 'Live Result', 'Next Improvement': 'Next Improvement', 'Case Study': 'Case Study' },
+    ar: { Client: 'العميل', 'My Role': 'دوري', 'The Challenge': 'التحدي', 'What I Delivered': 'ما قدّمته', 'Technical Stack': 'التقنيات المستخدمة', 'Live Result': 'النتيجة', 'Next Improvement': 'التحسين التالي', 'Case Study': 'دراسة الحالة' },
+};
+
+function CaseStudyModal({ project, onClose, t, lang }) {
     if (!project) return null;
     const cs = project.caseStudy;
+    const labels = LABELS[lang] || LABELS.en;
 
     return (
         <motion.div
@@ -49,7 +56,7 @@ function CaseStudyModal({ project, onClose }) {
                         ['Next Improvement', cs.next],
                     ].map(([label, value]) => (
                         <div key={label}>
-                            <h4 className="text-xs font-bold text-emerald-400 uppercase tracking-widest mb-2">{label}</h4>
+                            <h4 className="text-xs font-bold text-emerald-400 uppercase tracking-widest mb-2">{labels[label] || label}</h4>
                             <p className="text-gray-400 text-sm leading-relaxed">{value}</p>
                         </div>
                     ))}
@@ -62,7 +69,7 @@ function CaseStudyModal({ project, onClose }) {
                         </a>
                     )}
                         <button onClick={onClose} className="px-5 py-2.5 border border-white/10 text-gray-400 rounded-full hover:bg-white/5 hover:text-white transition-all text-sm" aria-label="Close case study modal">
-                            Close
+                            {t('clientWork.close')}
                         </button>
                 </div>
             </motion.div>
@@ -71,6 +78,7 @@ function CaseStudyModal({ project, onClose }) {
 }
 
 export default function ClientWork() {
+    const { t, lang } = useLanguage();
     const [activeCaseStudy, setActiveCaseStudy] = useState(null);
     const { data } = useSanityData('clientWork', clientProjects);
     const projects = data || clientProjects;
@@ -84,13 +92,13 @@ export default function ClientWork() {
                 className="text-center mb-12 md:mb-20"
             >
                 <div className="inline-block mb-4 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20">
-                    <span className="text-emerald-400 text-xs md:text-sm font-semibold tracking-wider uppercase">Production Experience</span>
+                    <span className="text-emerald-400 text-xs md:text-sm font-semibold tracking-wider uppercase">{t('clientWork.badge')}</span>
                 </div>
-                <h2 className="text-4xl md:text-7xl font-bold tracking-tighter">CLIENT <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">WORK</span></h2>
-                <p className="text-gray-500 max-w-lg mx-auto text-xs md:text-sm mt-4">Delivered production web products for real customers and businesses.</p>
+                <h2 className="text-4xl md:text-7xl font-bold tracking-tighter">{t('clientWork.title')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">{t('clientWork.highlight')}</span></h2>
+                <p className="text-gray-500 max-w-lg mx-auto text-xs md:text-sm mt-4">{t('clientWork.subtitle')}</p>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+            <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-stretch md:auto-rows-fr">
                 {projects.map((project, i) => (
                     <motion.div
                         key={project.title}
@@ -142,7 +150,7 @@ export default function ClientWork() {
                                             onClick={() => setActiveCaseStudy(project)}
                                             className="px-5 py-2.5 border border-white/10 text-gray-400 rounded-full hover:bg-white/5 hover:text-white transition-all text-xs"
                                         >
-                                            Case Study
+                                            {(LABELS[lang] || LABELS.en)['Case Study']}
                                         </button>
                                     </div>
                                 </div>
@@ -154,7 +162,7 @@ export default function ClientWork() {
 
             <AnimatePresence>
                 {activeCaseStudy && (
-                    <CaseStudyModal project={activeCaseStudy} onClose={() => setActiveCaseStudy(null)} />
+                    <CaseStudyModal project={activeCaseStudy} onClose={() => setActiveCaseStudy(null)} t={t} lang={lang} />
                 )}
             </AnimatePresence>
         </section>

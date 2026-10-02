@@ -5,8 +5,10 @@ import TiltCard from '../ui/TiltCard';
 import Carousel from '../ui/Carousel';
 import personalProjects from '../../data/projects';
 import { useSanityData } from '../../lib/useSanityData';
+import { useLanguage } from '../../lib/LanguageContext';
 
 export default function Projects() {
+    const { t } = useLanguage();
     const { data } = useSanityData('projects', personalProjects);
     const projects = data || personalProjects;
     return (
@@ -18,15 +20,15 @@ export default function Projects() {
                     viewport={{ once: true }}
                     className="text-4xl md:text-7xl font-bold tracking-tighter"
                 >
-                    SELECTED <br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">PROJECTS</span>
+                    {t('projects.title')} <br />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">{t('projects.highlight')}</span>
                 </motion.h2>
                 <p className="text-gray-500 max-w-xs text-xs md:text-sm italic">
-                    Technical and personal projects that demonstrate full-stack capabilities and deep learning.
+                    {t('projects.subtitle')}
                 </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 items-stretch md:auto-rows-fr">
                 {projects.map((p, i) => (
                 <motion.div
                     key={p.title}
@@ -37,7 +39,7 @@ export default function Projects() {
                     className="h-full"
                 >
                         <TiltCard className="group relative p-[1px] rounded-3xl md:rounded-[2.5rem] bg-gradient-to-b from-emerald-500/20 via-white/10 to-transparent h-full">
-                            <div className="bg-[#0a0a0a]/90 backdrop-blur-xl p-6 md:p-8 rounded-[calc(1.5rem-1px)] md:rounded-[2.4rem] min-h-[520px] md:min-h-[600px] flex flex-col justify-between overflow-hidden relative border border-white/5 hover:border-emerald-500/30 transition-colors duration-500 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
+                            <div className="bg-[#0a0a0a]/90 backdrop-blur-xl p-6 md:p-8 rounded-[calc(1.5rem-1px)] md:rounded-[2.4rem] h-full min-h-[520px] md:min-h-[600px] flex flex-col justify-between overflow-hidden relative border border-white/5 hover:border-emerald-500/30 transition-colors duration-500 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
                                 <div className="relative z-20">
                                     <div className="flex justify-between items-start mb-3 md:mb-4">
                                         <div className="text-[10px] uppercase tracking-widest text-emerald-400 font-bold">{p.category}</div>
@@ -49,17 +51,17 @@ export default function Projects() {
                                     <h3 className="text-lg md:text-xl font-bold mb-2">{p.title}</h3>
 
                                     <div className="mb-3">
-                                        <h4 className="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-1">Purpose</h4>
+                                        <h4 className="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-1">{t('projects.purpose')}</h4>
                                         <p className="text-gray-400 text-xs leading-relaxed">{p.purpose}</p>
                                     </div>
 
                                     <div className="mb-3">
-                                        <h4 className="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-1">What I Built</h4>
+                                        <h4 className="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-1">{t('projects.built')}</h4>
                                         <p className="text-gray-400 text-xs leading-relaxed line-clamp-3">{p.whatIBuilt}</p>
                                     </div>
 
                                     <div className="mb-3">
-                                        <span className="text-[10px] text-emerald-400 font-bold uppercase tracking-widest">Role: </span>
+                                        <span className="text-[10px] text-emerald-400 font-bold uppercase tracking-widest">{t('projects.role')}: </span>
                                         <span className="text-[10px] text-gray-500 font-medium">{p.role}</span>
                                     </div>
 
@@ -77,7 +79,7 @@ export default function Projects() {
 
                                 <div className="relative z-20">
                                     <div className="mb-3">
-                                        <h4 className="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-1.5">Technical Lesson</h4>
+                                        <h4 className="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-1.5">{t('projects.technicalLesson')}</h4>
                                         <p className="text-gray-500 text-[11px] leading-relaxed italic">{p.lesson}</p>
                                     </div>
 
@@ -91,7 +93,7 @@ export default function Projects() {
                                         {p.link && (
                                             <a href={p.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-full hover:bg-emerald-500 hover:text-black transition-all text-[10px] font-bold uppercase tracking-widest">
                                                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
-                                                {p.linkLabel}
+                                                {p.linkLabel || t('projects.visitLive')}
                                             </a>
                                         )}
                                         {p.github_link && (
