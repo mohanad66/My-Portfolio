@@ -55,10 +55,12 @@ function CaseStudyModal({ project, onClose }) {
                     ))}
                 </div>
 
-                <div className="mt-8 flex gap-3">
-                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 bg-emerald-500 text-black font-semibold rounded-full hover:bg-emerald-400 transition-all text-sm">
-                        {project.linkLabel}
-                    </a>
+                <div className="mt-8 flex gap-3 flex-wrap">
+                    {project.link && (
+                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 bg-emerald-500 text-black font-semibold rounded-full hover:bg-emerald-400 transition-all text-sm">
+                            {project.linkLabel}
+                        </a>
+                    )}
                         <button onClick={onClose} className="px-5 py-2.5 border border-white/10 text-gray-400 rounded-full hover:bg-white/5 hover:text-white transition-all text-sm" aria-label="Close case study modal">
                             Close
                         </button>
@@ -96,9 +98,10 @@ export default function ClientWork() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.15, duration: 0.8 }}
+                        className="h-full"
                     >
-                        <TiltCard className="group relative p-[1px] rounded-3xl md:rounded-[2.5rem] bg-gradient-to-b from-white/10 to-transparent h-full">
-                            <div className="bg-[#080808] p-6 md:p-10 rounded-[calc(1.5rem-1px)] md:rounded-[2.4rem] flex flex-col justify-between h-full relative overflow-hidden">
+                        <TiltCard className="group relative p-[1px] rounded-3xl md:rounded-[2.5rem] bg-gradient-to-b from-emerald-500/20 via-white/10 to-transparent h-full">
+                            <div className="bg-[#0a0a0a]/90 backdrop-blur-xl p-6 md:p-10 rounded-[calc(1.5rem-1px)] md:rounded-[2.4rem] flex flex-col justify-between h-full relative overflow-hidden border border-white/5 hover:border-emerald-500/30 transition-colors duration-500 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
                                 <div className="relative z-20">
                                     <div className="flex justify-between items-start mb-4 md:mb-6">
                                         <div>
@@ -129,10 +132,12 @@ export default function ClientWork() {
                                         ))}
                                     </div>
 
-                                    <div className="flex gap-3 items-center">
-                                        <a href={project.link} target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 bg-emerald-500 text-black font-semibold rounded-full hover:bg-emerald-400 transition-all text-xs">
-                                            {project.linkLabel}
-                                        </a>
+                                    <div className="flex gap-3 items-center flex-wrap">
+                                        {project.link && (
+                                            <a href={project.link} target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 bg-emerald-500 text-black font-semibold rounded-full hover:bg-emerald-400 transition-all text-xs">
+                                                {project.linkLabel}
+                                            </a>
+                                        )}
                                         <button
                                             onClick={() => setActiveCaseStudy(project)}
                                             className="px-5 py-2.5 border border-white/10 text-gray-400 rounded-full hover:bg-white/5 hover:text-white transition-all text-xs"

@@ -77,7 +77,7 @@ export default function Skills() {
                                     layout: { type: 'tween', duration: 0.3, ease: 'easeOut' },
                                     default: { type: 'tween', duration: 0.35, ease: 'easeOut', delay: Math.min(i * 0.02, 0.2) },
                                 }}
-                                className="relative aspect-square rounded-2xl md:rounded-3xl bg-white/[0.04] border border-white/10 overflow-hidden hover:border-emerald-500/20 transition-colors duration-300"
+                                className="relative aspect-square rounded-2xl md:rounded-3xl glass hover:border-emerald-500/25 transition-colors duration-300 overflow-hidden glass-hover"
                             >
                                 <div className="absolute top-0 right-0 w-16 md:w-20 h-16 md:h-20 bg-gradient-to-br from-white/5 to-transparent rounded-bl-2xl md:rounded-bl-3xl" />
                                 <div className="relative z-10 h-full flex flex-col items-center justify-center p-4 md:p-6 gap-2 md:gap-4">

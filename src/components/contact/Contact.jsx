@@ -42,8 +42,8 @@ export default function Contact() {
         }
     };
 
-    const inputClass = "w-full p-4 md:p-5 bg-white/5 border border-white/10 rounded-xl md:rounded-2xl focus:border-emerald-500 outline-none transition-all placeholder:text-gray-600 text-sm md:text-base hover:bg-white/[0.07] hover:border-white/20";
-    const selectClass = "w-full p-4 md:p-5 bg-white/5 border border-white/10 rounded-xl md:rounded-2xl focus:border-emerald-500 outline-none transition-all text-gray-400 text-sm md:text-base appearance-none cursor-pointer hover:bg-white/[0.07] hover:border-white/20";
+    const inputClass = "w-full p-4 md:p-5 glass rounded-xl md:rounded-2xl focus:border-emerald-500 outline-none transition-all placeholder:text-gray-500 text-sm md:text-base hover:bg-white/[0.08]";
+    const selectClass = "w-full p-4 md:p-5 glass rounded-xl md:rounded-2xl focus:border-emerald-500 outline-none transition-all text-gray-400 text-sm md:text-base appearance-none cursor-pointer hover:bg-white/[0.08]";
 
     return (
         <section id="contact" className="py-20 md:py-32 px-4 md:px-6 relative z-10" aria-label="Contact form">
@@ -52,7 +52,7 @@ export default function Contact() {
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    className="relative p-6 md:p-12 rounded-3xl md:rounded-[3rem] bg-gradient-to-b from-white/[0.03] to-transparent border border-white/10 overflow-hidden"
+                    className="relative p-6 md:p-12 rounded-3xl md:rounded-[3rem] glass-strong overflow-hidden"
                 >
                     <div className="absolute -top-24 -right-24 w-48 md:w-64 h-48 md:h-64 bg-emerald-500/10 blur-[100px] pointer-events-none" />
 
@@ -76,7 +76,7 @@ export default function Contact() {
                                     { href: 'https://wa.link/mn8hwl', label: 'WhatsApp', path: 'M12.031 0C5.394 0 0 5.394 0 12.031c0 2.115.548 4.17 1.589 5.986L.044 23.633l5.753-1.509a11.967 11.967 0 006.234 1.737h.005c6.634 0 12.031-5.396 12.031-12.033C24.067 5.395 18.67 0 12.031 0zm0 21.848h-.004a9.948 9.948 0 01-5.074-1.385l-.364-.216-3.774.99 1.008-3.68-.237-.377A9.957 9.957 0 012.012 12.03C2.012 6.51 6.511 2.01 12.035 2.01c5.522 0 10.021 4.501 10.021 10.022 0 5.522-4.5 10.016-10.025 10.016zm5.498-7.513c-.302-.15-1.787-.882-2.064-.984-.277-.101-.478-.15-.68.151-.201.301-.779.983-.955 1.185-.176.201-.352.226-.654.075-1.28-.616-2.484-1.523-3.284-2.673-.207-.297-.022-.458.129-.609.135-.135.302-.352.453-.528.151-.176.202-.301.302-.502.101-.202.05-.377-.025-.528-.076-.151-.68-1.642-.931-2.25-.245-.595-.494-.514-.68-.523-.175-.008-.376-.01-.577-.01-.2 0-.528.075-.804.377-.276.301-1.055 1.03-1.055 2.512s1.08 2.914 1.231 3.115c.15.201 2.124 3.242 5.143 4.545.719.309 1.279.494 1.717.632.721.229 1.378.197 1.895.12.578-.086 1.787-.73 2.038-1.436.251-.706.251-1.311.176-1.437-.076-.126-.277-.201-.579-.352z' },
                                     { href: 'https://www.facebook.com/profile.php?id=61593244390278', label: 'Facebook', path: 'M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z' },
                                 ].map((social) => (
-                                    <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label} className="p-3 bg-white/5 border border-white/10 rounded-full hover:bg-emerald-500 hover:text-black hover:border-emerald-500 transition-all text-white">
+                                    <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.label} className="p-3 glass rounded-full hover:bg-emerald-500 hover:text-black hover:border-emerald-500 transition-all text-white glass-hover">
                                         <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current"><path d={social.path} /></svg>
                                     </a>
                                 ))}

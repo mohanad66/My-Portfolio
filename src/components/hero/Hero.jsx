@@ -33,13 +33,27 @@ export default function Hero() {
     return (
         <section id="home" ref={container} className="relative z-10 min-h-screen flex items-center justify-center px-4 md:px-6 pt-20" aria-label="Hero section">
             <div className="text-center max-w-4xl mx-auto">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="inline-block mb-8 px-5 py-2.5 glass-glow glass-hover rounded-full"
+                >
+                    <span className="flex items-center gap-2 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-emerald-400">
+                        <span className="relative flex h-2 w-2">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                        </span>
+                        Available for projects
+                    </span>
+                </motion.div>
+
                 <motion.h1
                     ref={heroTitleRef}
                     initial={{ opacity: mobile ? 1 : 0, y: mobile ? 0 : 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     className="text-4xl sm:text-5xl md:text-[6rem] lg:text-[7.5rem] font-black tracking-tighter mb-4 leading-[0.9]"
                 >
-                    MOHANAD<br />MAHMOUD
+                    MOHANAD<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-500 text-glow">MAHMOUD</span>
                 </motion.h1>
 
                 <motion.p
@@ -78,7 +92,7 @@ export default function Hero() {
                         href="#client-work"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="px-6 md:px-8 py-3 bg-emerald-500 text-black font-semibold rounded-full hover:bg-emerald-400 transition-all text-sm md:text-base"
+                        className="px-6 md:px-8 py-3 bg-emerald-500 text-black font-semibold rounded-full hover:bg-emerald-400 hover:shadow-[0_0_40px_rgba(16,185,129,0.4)] transition-all text-sm md:text-base"
                     >
                         View Client Work
                     </motion.a>
@@ -86,7 +100,7 @@ export default function Hero() {
                         href="#contact"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="px-6 md:px-8 py-3 border border-emerald-500/50 text-emerald-400 rounded-full hover:bg-emerald-500/10 transition-all text-sm md:text-base"
+                        className="px-6 md:px-8 py-3 glass-glow glass-hover text-emerald-400 rounded-full transition-all text-sm md:text-base"
                     >
                         Start a Project
                     </motion.a>
@@ -95,7 +109,7 @@ export default function Hero() {
                         download="Mohanad_Mahmoud_CV.pdf"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="px-6 md:px-8 py-3 border border-white/10 text-gray-400 rounded-full hover:bg-white/5 hover:text-white transition-all flex items-center justify-center gap-2 text-sm md:text-base"
+                        className="px-6 md:px-8 py-3 glass glass-hover text-gray-300 rounded-full transition-all flex items-center justify-center gap-2 text-sm md:text-base"
                     >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
                         Download CV

@@ -28,15 +28,16 @@ export default function Projects() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                 {projects.map((p, i) => (
-                    <motion.div
-                        key={p.title}
-                        initial={{ opacity: 0, y: 40 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: i * 0.1, duration: 0.8 }}
-                    >
-                        <TiltCard className="group relative p-[1px] rounded-3xl md:rounded-[2.5rem] bg-gradient-to-b from-white/10 to-transparent h-full">
-                            <div className="bg-[#080808] p-6 md:p-8 rounded-[calc(1.5rem-1px)] md:rounded-[2.4rem] min-h-[520px] md:min-h-[600px] flex flex-col justify-between overflow-hidden relative">
+                <motion.div
+                    key={p.title}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1, duration: 0.8 }}
+                    className="h-full"
+                >
+                        <TiltCard className="group relative p-[1px] rounded-3xl md:rounded-[2.5rem] bg-gradient-to-b from-emerald-500/20 via-white/10 to-transparent h-full">
+                            <div className="bg-[#0a0a0a]/90 backdrop-blur-xl p-6 md:p-8 rounded-[calc(1.5rem-1px)] md:rounded-[2.4rem] min-h-[520px] md:min-h-[600px] flex flex-col justify-between overflow-hidden relative border border-white/5 hover:border-emerald-500/30 transition-colors duration-500 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
                                 <div className="relative z-20">
                                     <div className="flex justify-between items-start mb-3 md:mb-4">
                                         <div className="text-[10px] uppercase tracking-widest text-emerald-400 font-bold">{p.category}</div>
@@ -61,6 +62,15 @@ export default function Projects() {
                                         <span className="text-[10px] text-emerald-400 font-bold uppercase tracking-widest">Role: </span>
                                         <span className="text-[10px] text-gray-500 font-medium">{p.role}</span>
                                     </div>
+
+                                    {p.note && (
+                                        <div className="mb-4">
+                                            <div className="flex gap-2 p-3 rounded-xl bg-emerald-500/5 border border-emerald-500/20">
+                                                <svg className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                                                <p className="text-[10px] md:text-[11px] text-emerald-300/90 leading-relaxed">{p.note}</p>
+                                            </div>
+                                        </div>
+                                    )}
                                 </div>
 
                                 <div className={`absolute -bottom-10 -right-10 w-48 md:w-64 h-48 md:h-64 rounded-full bg-gradient-to-br ${p.color} blur-3xl opacity-30 group-hover:opacity-50 transition-opacity duration-500`} />
@@ -77,7 +87,13 @@ export default function Projects() {
                                         ))}
                                     </div>
 
-                                    <div className="flex gap-3">
+                                    <div className="flex gap-3 flex-wrap">
+                                        {p.link && (
+                                            <a href={p.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-full hover:bg-emerald-500 hover:text-black transition-all text-[10px] font-bold uppercase tracking-widest">
+                                                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                                                {p.linkLabel}
+                                            </a>
+                                        )}
                                         {p.github_link && (
                                             <a href={p.github_link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs text-gray-400 hover:text-emerald-400 transition-colors">
                                                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>

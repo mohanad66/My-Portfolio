@@ -27,6 +27,9 @@ export const queries = {
         period,
         images,
         github_link,
+        link,
+        linkLabel,
+        note,
         lesson
     }`,
 

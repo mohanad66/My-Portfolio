@@ -13,10 +13,15 @@ export default function About() {
                     transition={{ duration: 0.8 }}
                     className="relative"
                 >
-                    <div className="absolute inset-0 bg-emerald-500/20 blur-[100px] rounded-full" />
-                    <div className="relative rounded-3xl md:rounded-[3rem] overflow-hidden border border-white/10 aspect-square group">
-                        <img src="/bedouin.PNG" alt="Mohanad Mahmoud, Full-Stack Web Developer based in Egypt" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105" loading="lazy" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute inset-0 bg-emerald-500/15 blur-[100px] rounded-full" />
+                    <div className="absolute -top-4 -left-4 inset-0 bg-gradient-to-br from-emerald-500/20 to-transparent rounded-[3rem] filter blur-2xl" />
+                    <div className="relative rounded-3xl md:rounded-[3rem] overflow-hidden border border-emerald-500/15 glass group shadow-[0_8px_40px_rgba(0,0,0,0.4),0_0_40px_rgba(16,185,129,0.08)] aspect-square">
+                        <img src="/myImg.jpg" alt="Mohanad Mahmoud, Full-Stack Web Developer based in Egypt" className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/60 via-transparent to-transparent" />
+                        <div className="absolute bottom-4 left-4 right-4 p-4 glass-strong rounded-2xl hidden md:block">
+                            <p className="text-[10px] uppercase tracking-widest text-emerald-400 font-bold mb-1">Mohanad Mahmoud</p>
+                            <p className="text-xs text-gray-300">Full-Stack Web Developer — React & Django</p>
+                        </div>
                     </div>
                 </motion.div>
 
@@ -39,15 +44,15 @@ export default function About() {
                         </p>
                     </div>
 
-                    <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                         {[
                             { value: '2', label: 'Customer Products' },
                             { value: '6+', label: 'Projects Shipped' },
                             { value: '30+', label: 'Repositories' },
                         ].map((stat) => (
-                            <div key={stat.label}>
-                                <div className="text-3xl md:text-4xl font-black text-emerald-400 mb-2">{stat.value}</div>
-                                <div className="text-xs text-gray-500 font-bold uppercase tracking-widest">{stat.label}</div>
+                            <div key={stat.label} className="glass glass-hover rounded-2xl p-4 md:p-5 text-center">
+                                <div className="text-3xl md:text-4xl font-black text-emerald-400 mb-2 text-glow">{stat.value}</div>
+                                <div className="text-[9px] md:text-[10px] text-gray-500 font-bold uppercase tracking-widest">{stat.label}</div>
                             </div>
                         ))}
                     </div>
