@@ -14,7 +14,7 @@ const LABELS = {
 
 function CaseStudyModal({ project, onClose, t, lang }) {
     if (!project) return null;
-    const cs = project.caseStudy;
+    const cs = (lang === 'ar' && project.ar && project.ar.caseStudy) ? project.ar.caseStudy : project.caseStudy;
     const labels = LABELS[lang] || LABELS.en;
 
     return (
@@ -81,7 +81,10 @@ export default function ClientWork() {
     const { t, lang } = useLanguage();
     const [activeCaseStudy, setActiveCaseStudy] = useState(null);
     const { data } = useSanityData('clientWork', clientProjects);
-    const projects = data || clientProjects;
+    const projects = (data || clientProjects).map((p) => ({
+        ...p,
+        ar: (lang === 'ar' && p.ar) ? p.ar : null,
+    }));
 
     return (
         <section id="client-work" className="py-20 md:py-32 px-4 md:px-6 relative z-10 max-w-7xl mx-auto" aria-label="Client work and production projects">
@@ -100,35 +103,35 @@ export default function ClientWork() {
 
             <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-stretch md:auto-rows-fr">
                 {projects.map((project, i) => (
-                    <motion.div
-                        key={project.title}
-                        initial={{ opacity: 0, y: 40 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: i * 0.15, duration: 0.8 }}
-                        className="h-full"
-                    >
-                        <TiltCard className="group relative p-[1px] rounded-3xl md:rounded-[2.5rem] bg-gradient-to-b from-emerald-500/20 via-white/10 to-transparent h-full">
+<motion.div
+                            key={project.title}
+                            initial={{ opacity: 0, y: 40 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: i * 0.15, duration: 0.8 }}
+                            className="h-full"
+                        >
+                            <TiltCard className="group relative p-[1px] rounded-3xl md:rounded-[2.5rem] bg-gradient-to-b from-emerald-500/20 via-white/10 to-transparent h-full">
                             <div className="bg-[#0a0a0a]/90 backdrop-blur-xl p-6 md:p-10 rounded-[calc(1.5rem-1px)] md:rounded-[2.4rem] flex flex-col justify-between h-full relative overflow-hidden border border-white/5 hover:border-emerald-500/30 transition-colors duration-500 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
                                 <div className="relative z-20">
                                     <div className="flex justify-between items-start mb-4 md:mb-6">
                                         <div>
                                             <span className={`inline-block px-3 py-1 text-[9px] font-bold uppercase tracking-widest rounded-full border mb-3 ${project.badgeColor === 'emerald' ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400' : 'bg-blue-500/10 border-blue-500/30 text-blue-400'}`}>
-                                                {project.badge}
+                                                {project.ar ? project.ar.badge : project.badge}
                                             </span>
                                             <h3 className="text-xl md:text-2xl font-bold">{project.title}</h3>
                                         </div>
                                     </div>
 
                                     <div className="flex items-center gap-3 mb-3 text-[10px] uppercase tracking-widest text-gray-500 font-bold">
-                                        <span>{project.role}</span>
+                                        <span>{project.ar ? project.ar.role : project.role}</span>
                                         <span className="w-1 h-1 rounded-full bg-gray-600" />
-                                        <span>{project.type}</span>
+                                        <span>{project.ar ? project.ar.type : project.type}</span>
                                     </div>
 
                                     <Carousel images={project.images} className="mb-5" />
 
-                                    <p className="text-gray-400 text-xs md:text-sm leading-relaxed mb-5">{project.description}</p>
+                                    <p className="text-gray-400 text-xs md:text-sm leading-relaxed mb-5">{project.ar ? project.ar.description : project.description}</p>
                                 </div>
 
                                 <div className={`absolute -bottom-10 -right-10 w-48 md:w-64 h-48 md:h-64 rounded-full bg-gradient-to-br ${project.color} blur-3xl opacity-30 group-hover:opacity-50 transition-opacity duration-500`} />
@@ -143,7 +146,7 @@ export default function ClientWork() {
                                     <div className="flex gap-3 items-center flex-wrap">
                                         {project.link && (
                                             <a href={project.link} target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 bg-emerald-500 text-black font-semibold rounded-full hover:bg-emerald-400 transition-all text-xs">
-                                                {project.linkLabel}
+                                                {project.ar ? project.ar.linkLabel : project.linkLabel}
                                             </a>
                                         )}
                                         <button

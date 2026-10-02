@@ -6,11 +6,15 @@ import Carousel from '../ui/Carousel';
 import personalProjects from '../../data/projects';
 import { useSanityData } from '../../lib/useSanityData';
 import { useLanguage } from '../../lib/LanguageContext';
+import projectAr from '../../lib/translations/projectsAr';
 
 export default function Projects() {
-    const { t } = useLanguage();
+    const { t, lang } = useLanguage();
     const { data } = useSanityData('projects', personalProjects);
-    const projects = data || personalProjects;
+    const projects = (data || personalProjects).map((p) => ({
+        ...p,
+        ar: lang === 'ar' ? projectAr[p.title] : null,
+    }));
     return (
         <section id="projects" className="py-20 md:py-40 px-4 md:px-6 relative z-10 max-w-7xl mx-auto" aria-label="Selected projects">
             <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-20 gap-6">
@@ -42,7 +46,7 @@ export default function Projects() {
                             <div className="bg-[#0a0a0a]/90 backdrop-blur-xl p-6 md:p-8 rounded-[calc(1.5rem-1px)] md:rounded-[2.4rem] h-full min-h-[520px] md:min-h-[600px] flex flex-col justify-between overflow-hidden relative border border-white/5 hover:border-emerald-500/30 transition-colors duration-500 shadow-[0_8px_32px_rgba(0,0,0,0.4)]">
                                 <div className="relative z-20">
                                     <div className="flex justify-between items-start mb-3 md:mb-4">
-                                        <div className="text-[10px] uppercase tracking-widest text-emerald-400 font-bold">{p.category}</div>
+                                        <div className="text-[10px] uppercase tracking-widest text-emerald-400 font-bold">{p.ar?.category || p.category}</div>
                                         <div className="text-xs text-gray-600">{p.period}</div>
                                     </div>
 
@@ -52,24 +56,24 @@ export default function Projects() {
 
                                     <div className="mb-3">
                                         <h4 className="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-1">{t('projects.purpose')}</h4>
-                                        <p className="text-gray-400 text-xs leading-relaxed">{p.purpose}</p>
+                                        <p className="text-gray-400 text-xs leading-relaxed">{p.ar?.purpose || p.purpose}</p>
                                     </div>
 
                                     <div className="mb-3">
                                         <h4 className="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-1">{t('projects.built')}</h4>
-                                        <p className="text-gray-400 text-xs leading-relaxed line-clamp-3">{p.whatIBuilt}</p>
+                                        <p className="text-gray-400 text-xs leading-relaxed line-clamp-3">{p.ar?.whatIBuilt || p.whatIBuilt}</p>
                                     </div>
 
                                     <div className="mb-3">
                                         <span className="text-[10px] text-emerald-400 font-bold uppercase tracking-widest">{t('projects.role')}: </span>
-                                        <span className="text-[10px] text-gray-500 font-medium">{p.role}</span>
+                                        <span className="text-[10px] text-gray-500 font-medium">{p.ar?.role || p.role}</span>
                                     </div>
 
-                                    {p.note && (
+                                    {(p.ar?.note || p.note) && (
                                         <div className="mb-4">
                                             <div className="flex gap-2 p-3 rounded-xl bg-emerald-500/5 border border-emerald-500/20">
                                                 <svg className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                                                <p className="text-[10px] md:text-[11px] text-emerald-300/90 leading-relaxed">{p.note}</p>
+                                                <p className="text-[10px] md:text-[11px] text-emerald-300/90 leading-relaxed">{p.ar?.note || p.note}</p>
                                             </div>
                                         </div>
                                     )}
@@ -80,7 +84,7 @@ export default function Projects() {
                                 <div className="relative z-20">
                                     <div className="mb-3">
                                         <h4 className="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-1.5">{t('projects.technicalLesson')}</h4>
-                                        <p className="text-gray-500 text-[11px] leading-relaxed italic">{p.lesson}</p>
+                                        <p className="text-gray-500 text-[11px] leading-relaxed italic">{p.ar?.lesson || p.lesson}</p>
                                     </div>
 
                                     <div className="flex gap-2 flex-wrap mb-4">
@@ -93,7 +97,7 @@ export default function Projects() {
                                         {p.link && (
                                             <a href={p.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 rounded-full hover:bg-emerald-500 hover:text-black transition-all text-[10px] font-bold uppercase tracking-widest">
                                                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
-                                                {p.linkLabel || t('projects.visitLive')}
+                                                {p.ar?.linkLabel || p.linkLabel || t('projects.visitLive')}
                                             </a>
                                         )}
                                         {p.github_link && (

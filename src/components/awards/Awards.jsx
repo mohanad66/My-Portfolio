@@ -5,8 +5,10 @@ import TiltCard from '../ui/TiltCard';
 import useMobile from '../../hooks/useMobile';
 import awardsData from '../../data/awards';
 import { useSanityData } from '../../lib/useSanityData';
+import { useLanguage } from '../../lib/LanguageContext';
 
 export default function Awards() {
+    const { t, lang } = useLanguage();
     const mobile = useMobile();
     const { data } = useSanityData('awards', awardsData);
     const awards = data || awardsData;
@@ -15,7 +17,7 @@ export default function Awards() {
         <section id="awards" className="py-20 md:py-32 px-4 md:px-6 relative z-10" aria-label="Awards and recognition">
             <div className="max-w-5xl mx-auto">
                 <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-3xl md:text-6xl font-bold mb-12 md:mb-20 text-center tracking-tighter">
-                    RECOGNITION
+                    {t('awards.title')}
                 </motion.h2>
 
                 <div className="grid md:grid-cols-2 gap-6 md:gap-8">
@@ -26,9 +28,9 @@ export default function Awards() {
                                     <div className="text-4xl md:text-6xl mb-6 md:mb-8" style={{ transform: mobile ? 'none' : 'translateZ(40px)' }}>{award.icon}</div>
 
                                     <div style={{ transform: mobile ? 'none' : 'translateZ(30px)' }}>
-                                        <h3 className="text-xl md:text-2xl font-bold text-emerald-400 mb-2">{award.title}</h3>
-                                        <p className="text-lg md:text-xl text-white font-medium mb-1">{award.event}</p>
-                                        <p className="text-gray-500 text-xs md:text-sm mb-6 md:mb-8">{award.organization}</p>
+                                        <h3 className="text-xl md:text-2xl font-bold text-emerald-400 mb-2">{lang === 'ar' && award.titleAr ? award.titleAr : award.title}</h3>
+                                        <p className="text-lg md:text-xl text-white font-medium mb-1">{lang === 'ar' && award.eventAr ? award.eventAr : award.event}</p>
+                                        <p className="text-gray-500 text-xs md:text-sm mb-6 md:mb-8">{lang === 'ar' && award.organizationAr ? award.organizationAr : award.organization}</p>
 
                                         <span className="px-4 md:px-5 py-1 md:py-2 bg-emerald-500/5 border border-emerald-500/20 rounded-full text-emerald-400 text-[10px] md:text-xs font-black tracking-widest uppercase group-hover:bg-emerald-500/10 transition-all">{award.year}</span>
                                     </div>

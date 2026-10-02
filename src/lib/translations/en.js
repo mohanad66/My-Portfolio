@@ -82,6 +82,39 @@ export default {
         other: 'Other',
         location: 'Based in Egypt, Working Worldwide',
     },
+    credibility: {
+        products: 'Production Customer Products',
+        reactDjango: 'React + Django',
+        apis: 'REST APIs & Databases',
+        responsive: 'Responsive & Multilingual',
+        demos: 'Live Demos & GitHub Projects',
+    },
+    whatIBuild: {
+        badge: 'Services',
+        title: 'WHAT I',
+        highlight: 'BUILD',
+        items: {
+            webApps: {
+                title: 'Production Web Applications',
+                desc: 'React frontends, Django backends, REST APIs, authentication, databases, and deployment.',
+            },
+            ecommerce: {
+                title: 'E-commerce Systems',
+                desc: 'Product catalogs, carts, checkout flows, order management, admin functionality, and integrations.',
+            },
+            dashboards: {
+                title: 'Dashboards & Internal Tools',
+                desc: 'Operational dashboards, data views, admin workflows, task management, and business automation.',
+            },
+            frontend: {
+                title: 'Frontend Implementation',
+                desc: 'Responsive React interfaces, Arabic/RTL layouts, API integration, reusable components, and production UI.',
+            },
+        },
+    },
+    awards: {
+        title: 'RECOGNITION',
+    },
     footer: {
         copy: '© 2026 All Rights Reserved.',
         built: 'Built with React & 3D WebGL Logic.',
