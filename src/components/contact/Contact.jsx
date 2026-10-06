@@ -32,7 +32,12 @@ export default function Contact() {
 
             const result = await response.json();
 
-            if (!response.ok) throw new Error(result.error || 'Failed to send');
+            if (!response.ok) {
+                let errMsg = result?.error || 'Failed to send';
+                if (errMsg === 'Email service not configured') errMsg = t('contact.emailFailed');
+                if (errMsg === 'Failed to send email') errMsg = t('contact.error');
+                throw new Error(errMsg);
+            }
 
             setStatus({ loading: false, success: true, error: false, message: t('contact.success') });
             setFormData({ name: '', email: '', projectType: '', projectLink: '', message: '', timeline: '' });
