@@ -54,7 +54,7 @@ export default function Navbar() {
                 MM<span className="text-emerald-500">.</span>
             </a>
 
-            <div className="hidden md:flex items-center gap-8 text-xs font-bold tracking-[0.2em] uppercase text-gray-400">
+            <div className="hidden md:flex items-center gap-8 text-xs font-semibold tracking-[0.12em] uppercase text-gray-300">
                 {navKeys.map(({ key, id }) => (
                     <a
                         key={key}
