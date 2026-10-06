@@ -8,6 +8,7 @@ export default {
         awards: 'الجوائز',
         contact: 'تواصل معي',
         startProject: 'ابدأ مشروعًا',
+        bookSession: 'احجز جلسة',
     },
     hero: {
         available: 'متاح للمشاريع',
@@ -114,6 +115,13 @@ export default {
     },
     awards: {
         title: 'التكريم والإنجازات',
+    },
+    booking: {
+        title: 'احجز جلسة',
+        desc: '30 دقيقة مجانًا • 1–2 ساعة مدفوع بسعر 5$/ساعة',
+        book30: '30 دقيقة (مجاني)',
+        book60: '60 دقيقة (5$)',
+        book120: 'ساعتان (10$)',
     },
     footer: {
         copy: '© 2026 جميع الحقوق محفوظة.',

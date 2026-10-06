@@ -8,6 +8,7 @@ export default {
         awards: 'Awards',
         contact: 'Contact',
         startProject: 'Start a Project',
+        bookSession: 'Book Session',
     },
     hero: {
         available: 'Available for projects',
@@ -114,6 +115,13 @@ export default {
     },
     awards: {
         title: 'RECOGNITION',
+    },
+    booking: {
+        title: 'Book a Session',
+        desc: '30 minutes free • 1–2 hours paid at $5/hr',
+        book30: '30 min (Free)',
+        book60: '60 min ($5)',
+        book120: '2 hours ($10)',
     },
     footer: {
         copy: '© 2026 All Rights Reserved.',

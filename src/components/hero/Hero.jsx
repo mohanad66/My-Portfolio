@@ -89,7 +89,7 @@ export default function Hero() {
                     {t('hero.location')}
                 </motion.p>
 
-                <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4 justify-center px-4">
+                <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4 justify-center px-4 flex-wrap">
                     <motion.a
                         href="#client-work"
                         whileHover={{ scale: 1.05 }}
@@ -105,6 +105,16 @@ export default function Hero() {
                         className="px-6 md:px-8 py-3 glass-glow glass-hover text-emerald-400 rounded-full transition-all text-sm md:text-base"
                     >
                         {t('hero.startProject')}
+                    </motion.a>
+                    <motion.a
+                        href="https://tidycal.com/mohanadmahmoud33245/30-minute-meeting"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="px-6 md:px-8 py-3 glass-glow glass-hover text-emerald-400 rounded-full transition-all text-sm md:text-base"
+                    >
+                        {t('nav.bookSession')}
                     </motion.a>
                     <motion.a
                         href="/Mohanad-Mahmoud in second year in high school.pdf"

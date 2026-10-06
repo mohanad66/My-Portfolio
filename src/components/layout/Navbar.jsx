@@ -104,6 +104,9 @@ export default function Navbar() {
                 <motion.a href="#contact" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="px-6 py-2 bg-emerald-600 text-black text-[10px] font-black uppercase tracking-widest rounded-full hover:bg-emerald-400 transition-colors">
                     {t('nav.startProject')}
                 </motion.a>
+                <a href="https://tidycal.com/mohanadmahmoud33245/30-minute-meeting" target="_blank" rel="noopener noreferrer" className="px-6 py-2 glass-glow glass-hover text-emerald-400 text-[10px] font-black uppercase tracking-widest rounded-full transition-colors">
+                    {t('nav.bookSession')}
+                </a>
             </div>
 
             {mobileMenuOpen && (
@@ -124,8 +127,8 @@ export default function Navbar() {
                                 <span className="w-px h-3 bg-white/15" />
                                 <span className={lang === 'ar' ? 'text-emerald-400' : 'text-gray-400'}>ع</span>
                             </button>
-                            <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="flex-1 px-6 py-3 bg-emerald-600 text-black text-xs font-black uppercase tracking-widest rounded-full hover:bg-emerald-400 transition-colors text-center">
-                                {t('nav.startProject')}
+                            <a href="https://tidycal.com/mohanadmahmoud33245/30-minute-meeting" target="_blank" rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)} className="mt-2 px-6 py-3 glass-glow glass-hover text-emerald-400 text-xs font-black uppercase tracking-widest rounded-full transition-colors text-center">
+                                {t('nav.bookSession')}
                             </a>
                         </div>
                     </div>
