@@ -71,15 +71,9 @@ export default function Contact() {
                             <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-6 md:mb-8">
                                 {t('contact.desc')}
                             </p>
-                            <div className="mt-6 flex flex-col sm:flex-row gap-3 flex-wrap justify-center sm:justify-start">
+                            <div className="mt-6 flex flex-col sm:flex-row gap-3 flex-wrap justify-center sm:justify-start m-2">
                                     <a href="https://tidycal.com/mohanadmahmoud33245/30-minute-meeting" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 glass-glow glass-hover text-emerald-400 rounded-full text-xs md:text-sm font-semibold transition-all">
                                         {t('booking.book30')}
-                                    </a>
-                                    <a href="https://tidycal.com/mohanadmahmoud33245/60-minute-meeting" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 glass-glow glass-hover text-emerald-400 rounded-full text-xs md:text-sm font-semibold transition-all">
-                                        {t('booking.book60')}
-                                    </a>
-                                    <a href="https://tidycal.com/mohanadmahmoud33245/2-hours" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 glass-glow glass-hover text-emerald-400 rounded-full text-xs md:text-sm font-semibold transition-all">
-                                        {t('booking.book120')}
                                     </a>
                                 </div>
 
