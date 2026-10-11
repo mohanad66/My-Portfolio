@@ -13,7 +13,6 @@ import Skills from './components/skills/Skills';
 import GitHubStats from './components/github/GitHubStats';
 import Awards from './components/awards/Awards';
 import Contact from './components/contact/Contact';
-import ConsentBanner from './components/consent/ConsentBanner';
 
 function Shell() {
     const { dir, t } = useLanguage();
@@ -41,8 +40,6 @@ function Shell() {
                 <footer className="py-8 md:py-12 border-t border-white/5 text-center text-gray-600 text-[9px] md:text-[10px] tracking-[0.15em] md:tracking-[0.2em] uppercase px-4" role="contentinfo">
                     {t('footer.copy')} {t('footer.built')}
                 </footer>
-
-                <ConsentBanner />
             </div>
         </>
     );

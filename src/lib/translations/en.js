@@ -146,10 +146,4 @@ export default {
         copy: '© 2026 All Rights Reserved.',
         built: 'Built with React & 3D WebGL Logic.',
     },
-    consent: {
-        title: 'Cookie Consent',
-        message: 'I use Google Analytics to understand how visitors use this site. Accept to allow analytics and measurement, or decline to keep your visit anonymous.',
-        accept: 'I Accept',
-        decline: 'Decline',
-    },
 };
