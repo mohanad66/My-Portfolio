@@ -4,14 +4,14 @@ import { motion } from 'framer-motion';
 import { gsap } from 'gsap';
 import { useGSAP } from '@gsap/react';
 import useMobile from '../../hooks/useMobile';
-import Typewriter from '../ui/Typewriter';
 import { useLanguage } from '../../lib/LanguageContext';
+
+const WHATSAPP_ICON = 'M12.031 0C5.394 0 0 5.394 0 12.031c0 2.115.548 4.17 1.589 5.986L.044 23.633l5.753-1.509a11.967 11.967 0 006.234 1.737h.005c6.634 0 12.031-5.396 12.031-12.033C24.067 5.395 18.67 0 12.031 0zm0 21.848h-.004a9.948 9.948 0 01-5.074-1.385l-.364-.216-3.774.99 1.008-3.68-.237-.377A9.957 9.957 0 012.012 12.03C2.012 6.51 6.511 2.01 12.035 2.01c5.522 0 10.021 4.501 10.021 10.022 0 5.522-4.5 10.016-10.025 10.016zm5.498-7.513c-.302-.15-1.787-.882-2.064-.984-.277-.101-.478-.15-.68.151-.201.301-.779.983-.955 1.185-.176.201-.352.226-.654.075-1.28-.616-2.484-1.523-3.284-2.673-.207-.297-.022-.458.129-.609.135-.135.302-.352.453-.528.151-.176.202-.301.302-.502.101-.202.05-.377-.025-.528-.076-.151-.68-1.642-.931-2.25-.245-.595-.494-.514-.68-.523-.175-.008-.376-.01-.577-.01-.2 0-.528.075-.804.377-.276.301-1.055 1.03-1.055 2.512s1.08 2.914 1.231 3.115c.15.201 2.124 3.242 5.143 4.545.719.309 1.279.494 1.717.632.721.229 1.378.197 1.895.12.578-.086 1.787-.73 2.038-1.436.251-.706.251-1.311.176-1.437-.076-.126-.277-.201-.579-.352z';
 
 export default function Hero() {
     const { t } = useLanguage();
     const container = useRef(null);
     const heroTitleRef = useRef(null);
-    const heroSubtitleRef = useRef(null);
     const heroDescRef = useRef(null);
     const heroLocationRef = useRef(null);
     const ctaRef = useRef(null);
@@ -20,12 +20,11 @@ export default function Hero() {
     useGSAP(() => {
         if (mobile) return;
 
-        const targets = [heroTitleRef.current, heroSubtitleRef.current, heroDescRef.current, heroLocationRef.current, ctaRef.current];
+        const targets = [heroTitleRef.current, heroDescRef.current, heroLocationRef.current, ctaRef.current];
         if (targets.every(el => el)) {
             gsap.set(targets, { opacity: 0, y: 30 });
             const tl = gsap.timeline({ defaults: { ease: 'power4.out', duration: 1.2 } });
             tl.fromTo(heroTitleRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, delay: 0.3 })
-                .fromTo(heroSubtitleRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0 }, '-=0.9')
                 .fromTo(heroDescRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0 }, '-=0.9')
                 .fromTo(heroLocationRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0 }, '-=0.9')
                 .fromTo(ctaRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, ease: 'back.out(1.7)' }, '-=0.7');
@@ -38,7 +37,7 @@ export default function Hero() {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="inline-block mb-8 px-5 py-2.5 glass-glow glass-hover rounded-full"
+                    className="inline-block mb-6 px-5 py-2.5 glass-glow glass-hover rounded-full"
                 >
                     <span className="flex items-center gap-2 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-emerald-400">
                         <span className="relative flex h-2 w-2">
@@ -49,35 +48,33 @@ export default function Hero() {
                     </span>
                 </motion.div>
 
+                <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.15 }}
+                    className="text-sm sm:text-base md:text-xl font-black tracking-[0.3em] uppercase text-gray-300 mb-4"
+                >
+                    MOHANAD<span className="text-emerald-500">.</span>MAHMOUD
+                </motion.p>
+
                 <motion.h1
                     ref={heroTitleRef}
                     initial={{ opacity: mobile ? 1 : 0, y: mobile ? 0 : 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-4xl sm:text-5xl md:text-[6rem] lg:text-[7.5rem] font-black tracking-tighter mb-4 leading-[0.9]"
+                    className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[1.05] mb-6 max-w-4xl mx-auto"
                 >
-                    MOHANAD<br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-500 text-glow">MAHMOUD</span>
+                    {t('hero.headline1')}
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-emerald-500 text-glow">{t('hero.headline2')}</span>
+                    {t('hero.headline3')}
                 </motion.h1>
-
-                <motion.p
-                    ref={heroSubtitleRef}
-                    initial={{ opacity: mobile ? 1 : 0, y: mobile ? 0 : 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="text-base sm:text-xl md:text-3xl font-bold text-emerald-400 mb-4 tracking-tight"
-                >
-                    <Typewriter
-                        texts={[t('hero.subtitle1'), t('hero.subtitle2'), t('hero.subtitle3')]}
-                        speed={80}
-                        wait={2500}
-                    />
-                </motion.p>
 
                 <motion.p
                     ref={heroDescRef}
                     initial={{ opacity: mobile ? 1 : 0, y: mobile ? 0 : 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-sm sm:text-base md:text-lg text-gray-400 max-w-2xl mx-auto mb-3 leading-relaxed"
+                    className="text-sm sm:text-base md:text-lg text-gray-400 max-w-2xl mx-auto mb-6 leading-relaxed"
                 >
-                    {t('hero.desc')}
+                    {t('hero.offer')}
                 </motion.p>
 
                 <motion.p
@@ -89,42 +86,25 @@ export default function Hero() {
                     {t('hero.location')}
                 </motion.p>
 
-                <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4 justify-center px-4 flex-wrap">
+                <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4 justify-center px-4">
                     <motion.a
                         href="#client-work"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="px-6 md:px-8 py-3 bg-emerald-500 text-black font-semibold rounded-full hover:bg-emerald-400 hover:shadow-[0_0_40px_rgba(16,185,129,0.4)] transition-all text-sm md:text-base"
+                        className="px-8 py-3.5 bg-emerald-500 text-black font-semibold rounded-full hover:bg-emerald-400 hover:shadow-[0_0_40px_rgba(16,185,129,0.4)] transition-all text-sm md:text-base"
                     >
                         {t('hero.viewWork')}
                     </motion.a>
                     <motion.a
-                        href="#contact"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="px-6 md:px-8 py-3 glass-glow glass-hover text-emerald-400 rounded-full transition-all text-sm md:text-base"
-                    >
-                        {t('hero.startProject')}
-                    </motion.a>
-                    <motion.a
-                        href="https://tidycal.com/mohanadmahmoud33245/30-minute-meeting"
+                        href="https://wa.link/mn8hwl"
                         target="_blank"
                         rel="noopener noreferrer"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
-                        className="px-6 md:px-8 py-3 glass-glow glass-hover text-emerald-400 rounded-full transition-all text-sm md:text-base"
+                        className="px-8 py-3.5 bg-[#25D366] text-black font-semibold rounded-full hover:bg-[#1ebe5b] hover:shadow-[0_0_40px_rgba(37,211,102,0.45)] transition-all text-sm md:text-base flex items-center justify-center gap-2"
                     >
-                        {t('nav.bookSession')}
-                    </motion.a>
-                    <motion.a
-                        href="/Mohanad-Mahmoud in second year in high school.pdf"
-                        download="Mohanad_Mahmoud_CV.pdf"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="px-6 md:px-8 py-3 glass glass-hover text-gray-300 rounded-full transition-all flex items-center justify-center gap-2 text-sm md:text-base"
-                    >
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
-                        {t('hero.downloadCv')}
+                        <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current"><path d={WHATSAPP_ICON} /></svg>
+                        {t('whatsapp.chat')}
                     </motion.a>
                 </div>
             </div>

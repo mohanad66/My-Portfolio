@@ -101,6 +101,9 @@ export default function Navbar() {
                 <a href="https://www.facebook.com/profile.php?id=61593244390278" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors" aria-label="Facebook">
                     <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                 </a>
+                <a href="https://wa.link/mn8hwl" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors" aria-label="Chat on WhatsApp">
+                    <svg viewBox="0 0 24 24" className="w-5 h-5 fill-current"><path d="M12.031 0C5.394 0 0 5.394 0 12.031c0 2.115.548 4.17 1.589 5.986L.044 23.633l5.753-1.509a11.967 11.967 0 006.234 1.737h.005c6.634 0 12.031-5.396 12.031-12.033C24.067 5.395 18.67 0 12.031 0zm0 21.848h-.004a9.948 9.948 0 01-5.074-1.385l-.364-.216-3.774.99 1.008-3.68-.237-.377A9.957 9.957 0 012.012 12.03C2.012 6.51 6.511 2.01 12.035 2.01c5.522 0 10.021 4.501 10.021 10.022 0 5.522-4.5 10.016-10.025 10.016zm5.498-7.513c-.302-.15-1.787-.882-2.064-.984-.277-.101-.478-.15-.68.151-.201.301-.779.983-.955 1.185-.176.201-.352.226-.654.075-1.28-.616-2.484-1.523-3.284-2.673-.207-.297-.022-.458.129-.609.135-.135.302-.352.453-.528.151-.176.202-.301.302-.502.101-.202.05-.377-.025-.528-.076-.151-.68-1.642-.931-2.25-.245-.595-.494-.514-.68-.523-.175-.008-.376-.01-.577-.01-.2 0-.528.075-.804.377-.276.301-1.055 1.03-1.055 2.512s1.08 2.914 1.231 3.115c.15.201 2.124 3.242 5.143 4.545.719.309 1.279.494 1.717.632.721.229 1.378.197 1.895.12.578-.086 1.787-.73 2.038-1.436.251-.706.251-1.311.176-1.437-.076-.126-.277-.201-.579-.352z"/></svg>
+                </a>
                 <motion.a href="#contact" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="px-6 py-2 bg-emerald-600 text-black text-[10px] font-black uppercase tracking-widest rounded-full hover:bg-emerald-400 transition-colors">
                     {t('nav.startProject')}
                 </motion.a>
@@ -127,7 +130,10 @@ export default function Navbar() {
                                 <span className="w-px h-3 bg-white/15" />
                                 <span className={lang === 'ar' ? 'text-emerald-400' : 'text-gray-400'}>ع</span>
                             </button>
-                            <a href="https://tidycal.com/mohanadmahmoud33245/30-minute-meeting" target="_blank" rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)} className="mt-2 px-6 py-3 glass-glow glass-hover text-emerald-400 text-xs font-black uppercase tracking-widest rounded-full transition-colors text-center">
+                            <a href="https://wa.link/mn8hwl" target="_blank" rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)} className="px-6 py-3 bg-[#25D366] text-black text-xs font-black uppercase tracking-widest rounded-full transition-all text-center flex-1">
+                                {t('whatsapp.chat')}
+                            </a>
+                            <a href="https://tidycal.com/mohanadmahmoud33245/30-minute-meeting" target="_blank" rel="noopener noreferrer" onClick={() => setMobileMenuOpen(false)} className="px-6 py-3 glass-glow glass-hover text-emerald-400 text-xs font-black uppercase tracking-widest rounded-full transition-colors text-center">
                                 {t('nav.bookSession')}
                             </a>
                         </div>

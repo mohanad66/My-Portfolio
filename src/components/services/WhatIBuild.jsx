@@ -8,16 +8,19 @@ const services = [
         key: 'webApps',
         icon: 'M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
         gradient: 'from-emerald-500/20 to-teal-500/20',
+        featured: true,
     },
     {
         key: 'ecommerce',
         icon: 'M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 100 4 2 2 0 000-4z',
         gradient: 'from-purple-500/20 to-pink-500/20',
+        featured: true,
     },
     {
         key: 'dashboards',
         icon: 'M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z',
         gradient: 'from-blue-500/20 to-cyan-500/20',
+        featured: true,
     },
     {
         key: 'frontend',
@@ -53,7 +56,12 @@ export default function WhatIBuild() {
                         className="relative group"
                     >
                         <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-xl`} />
-                        <div className="relative glass glass-hover rounded-3xl p-6 md:p-8 h-full">
+                        <div className={`relative glass glass-hover rounded-3xl p-6 md:p-8 h-full ${service.featured ? '' : 'opacity-75'}`}>
+                            {!service.featured && (
+                                <div className="mb-4">
+                                    <span className="inline-block px-3 py-1 text-[9px] font-bold uppercase tracking-widest rounded-full border border-white/10 bg-white/5 text-gray-400">{t('whatIBuild.also')}</span>
+                                </div>
+                            )}
                             <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-5 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all duration-300">
                                 <svg className="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d={service.icon} />

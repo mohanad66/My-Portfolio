@@ -8,8 +8,8 @@ import { useSanityData } from '../../lib/useSanityData';
 import { useLanguage } from '../../lib/LanguageContext';
 
 const LABELS = {
-    en: { Client: 'Client', 'My Role': 'My Role', 'The Challenge': 'The Challenge', 'What I Delivered': 'What I Delivered', 'Technical Stack': 'Technical Stack', 'Live Result': 'Live Result', 'Next Improvement': 'Next Improvement', 'Case Study': 'Case Study' },
-    ar: { Client: 'العميل', 'My Role': 'دوري', 'The Challenge': 'التحدي', 'What I Delivered': 'ما قدّمته', 'Technical Stack': 'التقنيات المستخدمة', 'Live Result': 'النتيجة', 'Next Improvement': 'التحسين التالي', 'Case Study': 'دراسة الحالة' },
+    en: { Client: 'Client', 'My Role': 'My Role', 'The Challenge': 'The Challenge', 'What I Delivered': 'What I Delivered', 'Technical Stack': 'Technical Stack', 'Live Result': 'Live Result', 'Next Improvement': 'Next Improvement', 'Case Study': 'Case Study', 'The Goal': 'The Goal', Outcome: 'Outcome' },
+    ar: { Client: 'العميل', 'My Role': 'دوري', 'The Challenge': 'التحدي', 'What I Delivered': 'ما قدّمته', 'Technical Stack': 'التقنيات المستخدمة', 'Live Result': 'النتيجة', 'Next Improvement': 'التحسين التالي', 'Case Study': 'دراسة الحالة', 'The Goal': 'الهدف', Outcome: 'النتيجة' },
 };
 
 function CaseStudyModal({ project, onClose, t, lang }) {
@@ -132,6 +132,19 @@ export default function ClientWork() {
                                     <Carousel images={project.images} className="mb-5" />
 
                                     <p className="text-gray-400 text-xs md:text-sm leading-relaxed mb-5">{project.ar ? project.ar.description : project.description}</p>
+
+                                    {project.caseStudy && (
+                                        <>
+                                            <div className="mb-3">
+                                                <h4 className="text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-1">{(LABELS[lang] || LABELS.en)['The Goal']}</h4>
+                                                <p className="text-gray-400 text-xs leading-relaxed line-clamp-2">{project.ar && project.ar.caseStudy ? project.ar.caseStudy.challenge : project.caseStudy.challenge}</p>
+                                            </div>
+                                            <div className="mb-4">
+                                                <h4 className="text-[10px] uppercase tracking-widest text-emerald-500/70 font-bold mb-1">{(LABELS[lang] || LABELS.en)['Outcome']}</h4>
+                                                <p className="text-emerald-300/80 text-xs leading-relaxed line-clamp-2">{project.ar && project.ar.caseStudy ? project.ar.caseStudy.result : project.caseStudy.result}</p>
+                                            </div>
+                                        </>
+                                    )}
                                 </div>
 
                                 <div className={`absolute -bottom-10 -right-10 w-48 md:w-64 h-48 md:h-64 rounded-full bg-gradient-to-br ${project.color} blur-3xl opacity-30 group-hover:opacity-50 transition-opacity duration-500`} />

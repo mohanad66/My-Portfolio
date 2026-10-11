@@ -6,6 +6,7 @@ import Hero from './components/hero/Hero';
 import CredibilityStrip from './components/about/CredibilityStrip';
 import About from './components/about/About';
 import WhatIBuild from './components/services/WhatIBuild';
+import Process from './components/process/Process';
 import ClientWork from './components/projects/ClientWork';
 import Projects from './components/projects/Projects';
 import Skills from './components/skills/Skills';
@@ -27,6 +28,7 @@ function Shell() {
                     <CredibilityStrip />
                     <About />
                     <WhatIBuild />
+                    <Process />
                     <ClientWork />
                     <Projects />
                     <Skills />

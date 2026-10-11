@@ -12,13 +12,13 @@ export default {
     },
     hero: {
         available: 'Available for projects',
-        subtitle1: 'Full-Stack Web Developer',
-        subtitle2: 'React & Django Developer',
-        subtitle3: 'Production Web Apps',
-        desc: 'I build production-ready web applications, customer-facing websites, dashboards, e-commerce systems, and REST APIs using React and Django.',
-        location: 'Based in Egypt · Working with businesses, startups, and agencies worldwide.',
-        viewWork: 'View Client Work',
-        startProject: 'Start a Project',
+        role: 'Full-Stack Web Developer',
+        headline1: 'I build ',
+        headline2: 'React & Django web apps',
+        headline3: ' for startups & growing businesses.',
+        offer: 'I help businesses turn slow, outdated, or manual processes into simple websites and web apps.',
+        location: 'Based in Egypt · Working with startups & growing businesses worldwide.',
+        viewWork: 'See My Work',
         downloadCv: 'Download CV',
     },
     about: {
@@ -71,10 +71,12 @@ export default {
         timeline1m: 'Within 1 month',
         timeline3m: 'Within 3 months',
         timelineFlex: 'Flexible / No rush',
-        send: 'Send Message',
+        send: 'Tell Me About Your Project',
         sending: 'Sending...',
+        reply: 'I usually reply within a few hours.',
         success: 'Message sent successfully! I will review your project details and reply with a first scope and recommended next step.',
         error: 'Failed to send. Please email me directly at mohanadmahmoud33245@gmail.com',
+        emailFailed: 'Email service not configured yet. Please email me directly at mohanadmahmoud33245@gmail.com',
         webApp: 'Web Application',
         ecommerce: 'E-commerce',
         dashboard: 'Dashboard / Internal Tool',
@@ -94,6 +96,7 @@ export default {
         badge: 'Services',
         title: 'WHAT I',
         highlight: 'BUILD',
+        also: 'Also Available',
         items: {
             webApps: {
                 title: 'Production Web Applications',
@@ -115,6 +118,22 @@ export default {
     },
     awards: {
         title: 'RECOGNITION',
+    },
+    whatsapp: {
+        chat: 'Chat on WhatsApp',
+    },
+    process: {
+        badge: 'How I Work',
+        title: 'HOW WE',
+        highlight: 'WORK',
+        subtitle: 'A short, predictable process so you always know what happens next.',
+        steps: [
+            { title: 'Discuss', desc: 'Tell me your goal and current situation — free and without commitment.' },
+            { title: 'Agree on Scope', desc: 'You get a clear scope, timeline, and price before any work starts.' },
+            { title: 'Build', desc: 'I build in short cycles with progress you can see.' },
+            { title: 'Review', desc: 'You review, test, and request changes.' },
+            { title: 'Launch', desc: 'We go live together and I handle the pre-launch checklist.' },
+        ],
     },
     booking: {
         title: 'Book a Session',

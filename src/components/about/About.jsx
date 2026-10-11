@@ -18,11 +18,11 @@ export default function About() {
                     <div className="absolute inset-0 bg-emerald-500/15 blur-[100px] rounded-full" />
                     <div className="absolute -top-4 -left-4 inset-0 bg-gradient-to-br from-emerald-500/20 to-transparent rounded-[3rem] filter blur-2xl" />
                     <div className="relative rounded-3xl md:rounded-[3rem] overflow-hidden border border-emerald-500/15 glass group shadow-[0_8px_40px_rgba(0,0,0,0.4),0_0_40px_rgba(16,185,129,0.08)] aspect-square">
-                        <img src="/myImg.jpg" alt="Mohanad Mahmoud, Full-Stack Web Developer based in Egypt" className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+                        <img src="/myImg.jpg" alt="Mohanad Mahmoud, React and Django web developer based in Egypt" className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" loading="lazy" />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/60 via-transparent to-transparent" />
                         <div className="absolute bottom-4 left-4 right-4 p-4 glass-strong rounded-2xl hidden md:block">
                             <p className="text-[10px] uppercase tracking-widest text-emerald-400 font-bold mb-1">Mohanad Mahmoud</p>
-                            <p className="text-xs text-gray-300">{t('hero.subtitle1')} — React & Django</p>
+                            <p className="text-xs text-gray-300">{t('hero.role')} — React & Django</p>
                         </div>
                     </div>
                 </motion.div>

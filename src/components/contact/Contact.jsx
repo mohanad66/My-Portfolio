@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import useMobile from '../../hooks/useMobile';
 import { useLanguage } from '../../lib/LanguageContext';
+import { trackEvent } from '../../lib/analytics';
+
+const WHATSAPP_ICON = 'M12.031 0C5.394 0 0 5.394 0 12.031c0 2.115.548 4.17 1.589 5.986L.044 23.633l5.753-1.509a11.967 11.967 0 006.234 1.737h.005c6.634 0 12.031-5.396 12.031-12.033C24.067 5.395 18.67 0 12.031 0zm0 21.848h-.004a9.948 9.948 0 01-5.074-1.385l-.364-.216-3.774.99 1.008-3.68-.237-.377A9.957 9.957 0 012.012 12.03C2.012 6.51 6.511 2.01 12.035 2.01c5.522 0 10.021 4.501 10.021 10.022 0 5.522-4.5 10.016-10.025 10.016zm5.498-7.513c-.302-.15-1.787-.882-2.064-.984-.277-.101-.478-.15-.68.151-.201.301-.779.983-.955 1.185-.176.201-.352.226-.654.075-1.28-.616-2.484-1.523-3.284-2.673-.207-.297-.022-.458.129-.609.135-.135.302-.352.453-.528.151-.176.202-.301.302-.502.101-.202.05-.377-.025-.528-.076-.151-.68-1.642-.931-2.25-.245-.595-.494-.514-.68-.523-.175-.008-.376-.01-.577-.01-.2 0-.528.075-.804.377-.276.301-1.055 1.03-1.055 2.512s1.08 2.914 1.231 3.115c.15.201 2.124 3.242 5.143 4.545.719.309 1.279.494 1.717.632.721.229 1.378.197 1.895.12.578-.086 1.787-.73 2.038-1.436.251-.706.251-1.311.176-1.437-.076-.126-.277-.201-.579-.352z';
 
 export default function Contact() {
     const { t } = useLanguage();
@@ -41,6 +44,7 @@ export default function Contact() {
 
             setStatus({ loading: false, success: true, error: false, message: t('contact.success') });
             setFormData({ name: '', email: '', projectType: '', projectLink: '', message: '', timeline: '' });
+            trackEvent('form_submission', { project_type: formData.projectType || 'not_specified' });
 
             setTimeout(() => setStatus({ loading: false, success: false, error: false, message: '' }), 8000);
         } catch (error) {
@@ -68,14 +72,28 @@ export default function Contact() {
                             <h2 className="text-3xl md:text-5xl font-black mb-4 md:mb-6 tracking-tighter">
                                 {t('contact.heading')}
                             </h2>
-                            <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-6 md:mb-8">
+                            <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-4 md:mb-5">
                                 {t('contact.desc')}
                             </p>
-                            <div className="mt-6 flex flex-col sm:flex-row gap-3 flex-wrap justify-center sm:justify-start m-2">
-                                    <a href="https://tidycal.com/mohanadmahmoud33245/30-minute-meeting" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 glass-glow glass-hover text-emerald-400 rounded-full text-xs md:text-sm font-semibold transition-all">
-                                        {t('booking.book30')}
-                                    </a>
-                                </div>
+                            <p className="text-xs md:text-sm text-gray-500 mb-6 md:mb-8 flex items-center gap-2 flex-wrap">
+                                <svg className="w-4 h-4 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                                {t('contact.location')} · {t('contact.reply')}
+                            </p>
+                            <div className="mb-2 flex flex-col sm:flex-row gap-3 flex-wrap justify-center sm:justify-start">
+                                <a href="https://wa.link/mn8hwl" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 bg-[#25D366] text-black rounded-full text-xs md:text-sm font-bold transition-all flex items-center justify-center gap-2 hover:bg-[#1ebe5b]">
+                                    <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current"><path d={WHATSAPP_ICON} /></svg>
+                                    {t('whatsapp.chat')}
+                                </a>
+                                <a href="https://tidycal.com/mohanadmahmoud33245/30-minute-meeting" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 glass-glow glass-hover text-emerald-400 rounded-full text-xs md:text-sm font-semibold transition-all">
+                                    {t('booking.book30')}
+                                </a>
+                            </div>
+                            <div className="mb-4 md:mb-6">
+                                <a href="/Mohanad-Mahmoud in second year in high school.pdf" download="Mohanad_Mahmoud_CV.pdf" className="inline-flex items-center gap-2 text-xs text-gray-400 hover:text-emerald-400 transition-colors">
+                                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                                    {t('hero.downloadCv')}
+                                </a>
+                            </div>
 
                             <div className="flex gap-4">
                                 {[
@@ -157,6 +175,7 @@ export default function Contact() {
                                     </>
                                 ) : t('contact.send')}
                             </motion.button>
+                            <p className="text-center text-[10px] md:text-xs text-gray-500 pt-2">{t('contact.reply')}</p>
                         </form>
                     </div>
                 </motion.div>
